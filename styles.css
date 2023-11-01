@@ -1,15 +1,19 @@
+/* styles.css */
+
 body {
-    font-family: Arial, sans-serif;
+    background-color: black;
+    color: limegreen;
+    font-family: 'Courier New', monospace;
 }
 
-h1 {
-    color: #333366;
+header, nav, section, footer {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid limegreen;
 }
-/* Add this to your styles.css file */
 
 nav ul {
     list-style-type: none;
-    padding: 0;
 }
 
 nav ul li {
@@ -19,24 +23,17 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #333366;
-    padding: 5px;
-    border: 1px solid #333366;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
+    color: limegreen;
 }
 
 nav ul li a:hover {
-    background-color: #333366;
-    color: white;
+    text-decoration: underline;
 }
 
-section {
-    margin-top: 20px;
+a {
+    color: limegreen;
 }
 
-footer {
-    margin-top: 40px;
-    border-top: 1px solid #ccc;
-    padding: 20px 0;
+a:hover {
+    text-decoration: underline;
 }
