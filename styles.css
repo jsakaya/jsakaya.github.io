@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #333366;
+}
+/* Add this to your styles.css file */
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333366;
+    padding: 5px;
+    border: 1px solid #333366;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #333366;
+    color: white;
+}
+
+section {
+    margin-top: 20px;
+}
+
+footer {
+    margin-top: 40px;
+    border-top: 1px solid #ccc;
+    padding: 20px 0;
+}
