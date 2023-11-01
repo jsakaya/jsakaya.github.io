@@ -1,15 +1,15 @@
 /* styles.css */
 
 body {
-    background-color: black;
-    color: limegreen;
+    background-color: white;
+    color: black;
     font-family: 'Courier New', monospace;
 }
 
 header, nav, section, footer {
     margin: 20px;
     padding: 20px;
-    border: 1px solid limegreen;
+    border: 1px solid black;
 }
 
 nav ul {
@@ -23,7 +23,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: limegreen;
+    color: black;
 }
 
 nav ul li a:hover {
@@ -31,7 +31,7 @@ nav ul li a:hover {
 }
 
 a {
-    color: limegreen;
+    color: black;
 }
 
 a:hover {
