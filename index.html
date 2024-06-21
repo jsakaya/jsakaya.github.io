@@ -31,21 +31,47 @@
         nav ul { list-style-type: none; padding: 0; }
         nav ul li { display: inline; margin-right: 2rem; }
         nav ul li a { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.1em; }
-        main { display: flex; }
-        article { flex: 2; padding-right: 2rem; }
-        aside { flex: 1; font-size: 1.1rem; line-height: 1.6rem; }
-        .sidenote { float: right; clear: right; margin-right: -60%; width: 50%; margin-top: 0; margin-bottom: 0; font-size: 1.1rem; line-height: 1.3; vertical-align: baseline; position: relative; }
+        main { display: flex; position: relative; }
+        article { flex: 0 1 65%; max-width: 65%; padding-right: 2rem; }
+        aside { flex: 0 1 35%; font-size: 1.1rem; line-height: 1.6rem; }
         .sidenote-number { counter-increment: sidenote-counter; }
-        .sidenote-number:after, .sidenote:before { content: counter(sidenote-counter) " "; font-family: et-book-roman-old-style; position: relative; vertical-align: baseline; }
-        .sidenote-number:after { content: counter(sidenote-counter); font-size: 1rem; top: -0.5rem; left: 0.1rem; }
-        .sidenote:before { content: counter(sidenote-counter) " "; top: -0.5rem; }
+        .sidenote-number:after { content: counter(sidenote-counter); vertical-align: super; font-size: 0.8em; }
+        .sidenote {
+            float: right;
+            clear: right;
+            margin-right: -60%;
+            width: 50%;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 1.1rem;
+            line-height: 1.3;
+            vertical-align: baseline;
+            position: relative;
+            right: -55%;
+        }
+        .sidenote:before { content: counter(sidenote-counter) " "; font-size: 0.9em; top: -0.5rem; }
         footer { margin-top: 4rem; border-top: 1px solid #ccc; padding-top: 1rem; font-size: 1.1rem; }
-        @media (max-width: 760px) {
-            body { width: 84%; padding-left: 8%; padding-right: 8%; }
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            float: right;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 1200px) {
             main { display: block; }
-            article { width: 100%; }
-            aside { width: 100%; margin-top: 2rem; }
-            .sidenote { display: none; }
+            article { max-width: 100%; padding-right: 0; }
+            aside { max-width: 100%; margin-top: 2rem; }
+            .sidenote {
+                float: none;
+                display: block;
+                margin: 1rem 0;
+                padding: 0.5rem;
+                border-left: 2px solid #ccc;
+                width: 100%;
+                right: 0;
+            }
         }
     </style>
 </head>
