@@ -3,54 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YJoseph Sakaya | Machine Learning & Data Science Expert</title>
+    <title>Your Name - Personal Website</title>
     <style>
         body {
-            font-family: 'Garamond', serif;
-            margin: 40px;
-            padding-right: 200px; /* Space for notes */
+            font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+            background-color: #fffff8;
+            color: #111;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+            counter-reset: sidenote-counter;
         }
         h1, h2, h3 {
-            color: #333366;
+            font-weight: 400;
+            margin-top: 2.1rem;
+            margin-bottom: 1.4rem;
+            line-height: 1;
         }
-        p, li {
-            color: #333;
-            line-height: 1.6;
-        }
-        footer {
-            margin-top: 50px;
+        h1 { font-size: 3.2rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.7rem; }
+        p { font-size: 1.4rem; line-height: 2rem; margin-top: 1.4rem; margin-bottom: 1.4rem; padding-right: 0; vertical-align: baseline; }
+        a { color: #111; text-decoration: none; border-bottom: 1px solid #777; padding-bottom: 1px; }
+        a:hover { color: #777; border-bottom: none; }
+        header { margin-bottom: 4rem; }
+        nav { border-bottom: 1px solid #ccc; padding-bottom: 1rem; margin-bottom: 2rem; }
+        nav ul { list-style-type: none; padding: 0; }
+        nav ul li { display: inline; margin-right: 2rem; }
+        nav ul li a { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.1em; }
+        main { display: flex; }
+        article { flex: 2; padding-right: 2rem; }
+        aside { flex: 1; font-size: 1.1rem; line-height: 1.6rem; }
+        .sidenote { float: right; clear: right; margin-right: -60%; width: 50%; margin-top: 0; margin-bottom: 0; font-size: 1.1rem; line-height: 1.3; vertical-align: baseline; position: relative; }
+        .sidenote-number { counter-increment: sidenote-counter; }
+        .sidenote-number:after, .sidenote:before { content: counter(sidenote-counter) " "; font-family: et-book-roman-old-style; position: relative; vertical-align: baseline; }
+        .sidenote-number:after { content: counter(sidenote-counter); font-size: 1rem; top: -0.5rem; left: 0.1rem; }
+        .sidenote:before { content: counter(sidenote-counter) " "; top: -0.5rem; }
+        footer { margin-top: 4rem; border-top: 1px solid #ccc; padding-top: 1rem; font-size: 1.1rem; }
+        @media (max-width: 760px) {
+            body { width: 84%; padding-left: 8%; padding-right: 8%; }
+            main { display: block; }
+            article { width: 100%; }
+            aside { width: 100%; margin-top: 2rem; }
+            .sidenote { display: none; }
         }
     </style>
 </head>
 <body>
-
-    <h1>Joseph Sakaya</h1>
-    <p>Machine Learning & Data Science Expert</p>
-
+    <header>
+        <h1>Your Name</h1>
+        <p>Welcome to my personal website</p>
+    </header>
+    
     <nav>
-        <a href="projects.html">Projects</a>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
     
-    <h2>About Me</h2>
-    <p>
-        // Your text here.
-    </p>
-
-    <h2>Expertise</h2>
-    <ul>
-        <li>Machine Learning</li>
-        <li>Data Science</li>
-        <li>Other relevant skills</li>
-    </ul>
-
-    <h2>Contact</h2>
-    <p>
-        // Your contact information here.
-    </p>
-
+    <main>
+        <article>
+            <section id="home">
+                <h2>Home</h2>
+                <p>Welcome to my personal website. Here you can learn more about me and my work. This layout is inspired by Edward Tufte's design principles, focusing on simplicity and readability.<span class="sidenote-number"></span><span class="sidenote">Edward Tufte is a pioneer in the field of data visualization and information design.</span></p>
+            </section>
+            
+            <section id="about">
+                <h2>About Me</h2>
+                <p>Write a brief introduction about yourself here. The Tufte-inspired layout allows for sidenotes, which can be used to provide additional context or interesting asides.<span class="sidenote-number"></span><span class="sidenote">Sidenotes are a key feature of Tufte's design, allowing for additional information without disrupting the main text flow.</span></p>
+            </section>
+            
+            <section id="portfolio">
+                <h2>Portfolio</h2>
+                <p>Showcase your projects or work samples here. The clean, content-focused layout helps highlight your work effectively.</p>
+            </section>
+            
+            <section id="contact">
+                <h2>Contact</h2>
+                <p>Provide your contact information or a contact form here. Remember, in a Tufte-inspired design, simplicity and clarity are key.</p>
+            </section>
+        </article>
+        
+        <aside>
+            <h3>Latest Updates</h3>
+            <p>This sidebar can be used for recent blog posts, quick links, or other supplementary information that doesn't fit in the main content area.</p>
+        </aside>
+    </main>
+    
     <footer>
-        <p>Email: hosanna.joseph@gmail.com</p>
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
     </footer>
-
 </body>
 </html>
