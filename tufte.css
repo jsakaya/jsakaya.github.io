@@ -5,10 +5,13 @@
     --side-note-color: #666;
     --border-color: #ddd;
     --active-tab-color: #fffff8;
+    --link-color: #111;
+    --link-hover-color: #666;
 }
 
 html {
     font-size: 15px;
+    height: 100%;
 }
 
 body {
@@ -18,49 +21,58 @@ body {
     padding-left: 12.5%;
     background-color: var(--background-color);
     color: var(--text-color);
-    max-width: 1400px;
+    max-width: 1200px;
     counter-reset: sidenote-counter;
     font-family: 'ET Book', Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    line-height: 1.6;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 4rem;
 }
 
 /* Navigation Tabs */
 .nav-tabs {
-    margin: 2rem 0;
+    margin: 3rem 0 4rem;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0;
     font-family: 'ET Book', Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    display: flex;
+    gap: 2rem;
 }
 
 .nav-tabs a {
     display: inline-block;
-    padding: 0.5rem 1rem;
-    margin-right: 1rem;
-    margin-bottom: -1px;
+    padding: 0.5rem 0;
     text-decoration: none;
     color: var(--side-note-color);
-    border: 1px solid transparent;
-    border-radius: 3px 3px 0 0;
-    font-size: 1.2rem;
-    transition: all 0.2s ease;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
 }
 
 .nav-tabs a:hover {
     color: var(--text-color);
-    border-color: var(--border-color);
-    background-color: var(--active-tab-color);
+    border-bottom-color: var(--text-color);
 }
 
 .nav-tabs a.active {
     color: var(--text-color);
-    border: 1px solid var(--border-color);
-    border-bottom-color: var(--active-tab-color);
-    background-color: var(--active-tab-color);
+    border-bottom: 2px solid var(--text-color);
 }
 
 /* Tab Content */
 .tab-content {
     display: none;
     padding: 2rem 0;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .tab-content.active {
@@ -69,19 +81,20 @@ body {
 
 h1 {
     font-weight: 400;
-    margin-top: 4rem;
-    margin-bottom: 1.5rem;
-    font-size: 3.2rem;
-    line-height: 1;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
 h2 {
     font-style: italic;
     font-weight: 400;
-    margin-top: 2.1rem;
+    margin-top: 3rem;
     margin-bottom: 1.4rem;
-    font-size: 2.2rem;
-    line-height: 1;
+    font-size: 2rem;
+    line-height: 1.2;
 }
 
 h3 {
@@ -90,30 +103,44 @@ h3 {
     font-size: 1.7rem;
     margin-top: 2rem;
     margin-bottom: 1.4rem;
-    line-height: 1;
+    line-height: 1.2;
 }
 
 article {
     padding: 1rem 0;
+    max-width: 650px;
 }
 
 p, ol, ul {
-    font-size: 1.4rem;
-    line-height: 2rem;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
 }
 
-p {
-    margin-top: 1.4rem;
-    margin-bottom: 1.4rem;
-    padding-right: 0;
-    vertical-align: baseline;
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 1.2em;
+}
+
+ul li:before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--side-note-color);
 }
 
 .subtitle {
     font-style: italic;
-    margin-top: -1.5rem;
-    margin-bottom: 3rem;
-    font-size: 1.8rem;
+    margin-top: -0.5rem;
+    margin-bottom: 4rem;
+    font-size: 1.6rem;
+    color: var(--side-note-color);
 }
 
 /* Side notes and margin notes */
@@ -122,26 +149,28 @@ p {
     clear: right;
     margin-right: -60%;
     width: 50%;
-    margin-top: 0;
+    margin-top: 0.3rem;
     margin-bottom: 0;
-    font-size: 1.1rem;
-    line-height: 1.3;
+    font-size: 0.9rem;
+    line-height: 1.4;
     vertical-align: baseline;
     position: relative;
     color: var(--side-note-color);
+    font-style: italic;
 }
 
 /* Links */
 a:link, a:visited {
-    color: #111;
+    color: var(--link-color);
     text-decoration: none;
-    border-bottom: 1px solid #777;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 1px;
+    transition: all 0.2s ease;
 }
 
 a:hover {
-    color: #555;
-    border-bottom: 1px solid #555;
+    color: var(--link-hover-color);
+    border-bottom: 1px solid var(--link-hover-color);
 }
 
 /* Responsive design */
@@ -157,28 +186,33 @@ a:hover {
         display: block;
         margin: 1rem 0;
         width: 100%;
-        font-size: 1.2rem;
+        font-size: 1rem;
+        padding: 1rem;
+        background: rgba(0,0,0,0.02);
+        border-left: 3px solid var(--border-color);
     }
     
     h1 {
-        font-size: 2.7rem;
+        font-size: 2.5rem;
     }
     
     h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .nav-tabs {
-        display: flex;
-        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
         gap: 0.5rem;
+        margin: 2rem 0;
     }
 
     .nav-tabs a {
-        margin-right: 0;
-        flex: 1;
-        text-align: center;
-        font-size: 1.1rem;
-        padding: 0.4rem 0.6rem;
+        font-size: 1rem;
+        padding: 0.4rem 0;
+    }
+
+    article {
+        padding: 0;
     }
 } 

@@ -21,10 +21,10 @@
 
         <section>
             <h2>About</h2>
-            <p>Welcome to my personal website. I am a Senior Data Scientist passionate about transforming data into meaningful insights and solutions.</p>
+            <p>Welcome to my personal website. I am a Senior Data Scientist passionate about transforming data into meaningful insights and solutions. With a focus on machine learning and statistical analysis, I help organizations make data-driven decisions.</p>
             
             <p><span class="marginnote">
-                The margin notes are a signature element of Tufte's design philosophy, allowing for supplementary information without interrupting the main text flow.
+                My approach combines rigorous statistical methodology with practical business applications.
             </span></p>
         </section>
 
@@ -32,39 +32,52 @@
             <h2>Expertise</h2>
             <ul>
                 <li>Data Science & Analytics</li>
-                <li>Machine Learning</li>
-                <li>Statistical Analysis</li>
-                <li>Data Visualization</li>
+                <li>Machine Learning & AI</li>
+                <li>Statistical Analysis & Modeling</li>
+                <li>Data Visualization & Storytelling</li>
+                <li>Big Data Processing</li>
+                <li>Deep Learning</li>
             </ul>
         </section>
     </article>
 
     <article id="projects" class="tab-content">
-        <h2>Projects</h2>
+        <h2>Selected Projects</h2>
         <section>
-            <h3>Data Science Projects</h3>
             <p><span class="marginnote">
-                Each project demonstrates practical applications of data science in solving real-world problems.
+                Each project represents a unique challenge in data science, solved through innovative approaches and rigorous methodology.
             </span></p>
-            <ul>
-                <li>Machine Learning Pipeline Development</li>
-                <li>Predictive Analytics Solutions</li>
-                <li>Data Visualization Dashboards</li>
-                <li>Natural Language Processing Systems</li>
-            </ul>
+            
+            <h3>Machine Learning Pipeline Development</h3>
+            <p>Designed and implemented end-to-end ML pipelines for real-time prediction systems.</p>
+            
+            <h3>Predictive Analytics Platform</h3>
+            <p>Built a scalable analytics platform for processing and analyzing large-scale customer data.</p>
+            
+            <h3>Natural Language Processing System</h3>
+            <p>Developed an NLP system for automated document classification and information extraction.</p>
         </section>
     </article>
 
     <article id="publications" class="tab-content">
-        <h2>Publications</h2>
+        <h2>Publications & Talks</h2>
         <section>
             <p><span class="marginnote">
-                Academic and industry publications showcasing research and findings in data science.
+                Research and insights shared with the data science community through various channels.
             </span></p>
+            
+            <h3>Research Papers</h3>
             <ul>
-                <li>Research Papers</li>
-                <li>Technical Blog Posts</li>
-                <li>Conference Presentations</li>
+                <li>Machine Learning Applications in Data Analysis</li>
+                <li>Statistical Methods for Big Data</li>
+                <li>Advances in Predictive Modeling</li>
+            </ul>
+
+            <h3>Technical Writing</h3>
+            <ul>
+                <li>Best Practices in Data Science</li>
+                <li>Modern Machine Learning Techniques</li>
+                <li>Data Visualization Strategies</li>
             </ul>
         </section>
     </article>
@@ -72,40 +85,34 @@
     <article id="contact" class="tab-content">
         <h2>Contact</h2>
         <section>
-            <p>Feel free to reach out for collaborations or discussions about data science.</p>
+            <p>I'm always interested in collaborating on challenging data science projects and research opportunities.</p>
             <p><span class="marginnote">
-                Connect with me on professional networks and social media platforms.
+                Let's connect and discuss how we can work together on your data science challenges.
             </span></p>
             <ul>
                 <li>Email: [Your Email]</li>
                 <li>LinkedIn: [Your LinkedIn]</li>
                 <li>GitHub: [Your GitHub]</li>
+                <li>Twitter: [Your Twitter]</li>
             </ul>
         </section>
     </article>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get all tab links and content
             const tabLinks = document.querySelectorAll('.nav-tabs a');
             const tabContents = document.querySelectorAll('.tab-content');
 
-            // Handle tab clicks
             tabLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
-                    // Remove active class from all tabs and content
                     tabLinks.forEach(l => l.classList.remove('active'));
                     tabContents.forEach(c => c.classList.remove('active'));
-                    
-                    // Add active class to clicked tab and corresponding content
                     this.classList.add('active');
                     document.querySelector(this.getAttribute('href')).classList.add('active');
                 });
             });
 
-            // Handle direct links to tabs
             if (window.location.hash) {
                 const tab = document.querySelector(`.nav-tabs a[href="${window.location.hash}"]`);
                 if (tab) tab.click();
