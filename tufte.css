@@ -3,6 +3,8 @@
     --background-color: #fffff8;
     --text-color: #111;
     --side-note-color: #666;
+    --border-color: #ddd;
+    --active-tab-color: #fffff8;
 }
 
 html {
@@ -19,6 +21,50 @@ body {
     max-width: 1400px;
     counter-reset: sidenote-counter;
     font-family: 'ET Book', Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+}
+
+/* Navigation Tabs */
+.nav-tabs {
+    margin: 2rem 0;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0;
+    font-family: 'ET Book', Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+}
+
+.nav-tabs a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    margin-bottom: -1px;
+    text-decoration: none;
+    color: var(--side-note-color);
+    border: 1px solid transparent;
+    border-radius: 3px 3px 0 0;
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+}
+
+.nav-tabs a:hover {
+    color: var(--text-color);
+    border-color: var(--border-color);
+    background-color: var(--active-tab-color);
+}
+
+.nav-tabs a.active {
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-bottom-color: var(--active-tab-color);
+    background-color: var(--active-tab-color);
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    padding: 2rem 0;
+}
+
+.tab-content.active {
+    display: block;
 }
 
 h1 {
@@ -48,7 +94,7 @@ h3 {
 }
 
 article {
-    padding: 5rem 0;
+    padding: 1rem 0;
 }
 
 p, ol, ul {
@@ -120,5 +166,19 @@ a:hover {
     
     h2 {
         font-size: 2rem;
+    }
+
+    .nav-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .nav-tabs a {
+        margin-right: 0;
+        flex: 1;
+        text-align: center;
+        font-size: 1.1rem;
+        padding: 0.4rem 0.6rem;
     }
 } 

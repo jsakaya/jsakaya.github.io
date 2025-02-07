@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ET+Book:ital,wght@0,400;0,700;1,400&display=swap">
 </head>
 <body>
-    <article>
+    <nav class="nav-tabs">
+        <a href="#home" class="active">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <article id="home" class="tab-content active">
         <h1>Joseph Hosanna Sakaya</h1>
         <p class="subtitle">Senior Data Scientist</p>
 
@@ -30,11 +37,80 @@
                 <li>Data Visualization</li>
             </ul>
         </section>
+    </article>
 
+    <article id="projects" class="tab-content">
+        <h2>Projects</h2>
         <section>
-            <h2>Contact</h2>
-            <p>Feel free to reach out for collaborations or discussions about data science.</p>
+            <h3>Data Science Projects</h3>
+            <p><span class="marginnote">
+                Each project demonstrates practical applications of data science in solving real-world problems.
+            </span></p>
+            <ul>
+                <li>Machine Learning Pipeline Development</li>
+                <li>Predictive Analytics Solutions</li>
+                <li>Data Visualization Dashboards</li>
+                <li>Natural Language Processing Systems</li>
+            </ul>
         </section>
     </article>
+
+    <article id="publications" class="tab-content">
+        <h2>Publications</h2>
+        <section>
+            <p><span class="marginnote">
+                Academic and industry publications showcasing research and findings in data science.
+            </span></p>
+            <ul>
+                <li>Research Papers</li>
+                <li>Technical Blog Posts</li>
+                <li>Conference Presentations</li>
+            </ul>
+        </section>
+    </article>
+
+    <article id="contact" class="tab-content">
+        <h2>Contact</h2>
+        <section>
+            <p>Feel free to reach out for collaborations or discussions about data science.</p>
+            <p><span class="marginnote">
+                Connect with me on professional networks and social media platforms.
+            </span></p>
+            <ul>
+                <li>Email: [Your Email]</li>
+                <li>LinkedIn: [Your LinkedIn]</li>
+                <li>GitHub: [Your GitHub]</li>
+            </ul>
+        </section>
+    </article>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all tab links and content
+            const tabLinks = document.querySelectorAll('.nav-tabs a');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            // Handle tab clicks
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all tabs and content
+                    tabLinks.forEach(l => l.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.querySelector(this.getAttribute('href')).classList.add('active');
+                });
+            });
+
+            // Handle direct links to tabs
+            if (window.location.hash) {
+                const tab = document.querySelector(`.nav-tabs a[href="${window.location.hash}"]`);
+                if (tab) tab.click();
+            }
+        });
+    </script>
 </body>
 </html> 
