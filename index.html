@@ -1163,65 +1163,7 @@
       }
     }
     
-    /* Duplicate styles for PDF generation via html2pdf.js */
-    body.printing-pdf .resume {
-      font-size: 6pt;
-      line-height: 1.1;
-      background: white;
-      color: black;
-    }
-    
-    body.printing-pdf .page {
-      padding: 0;
-    }
-    
-    body.printing-pdf .resume {
-      box-shadow: none;
-      max-width: 100%;
-    }
-    
-    body.printing-pdf .resume-content {
-      padding: 0.2rem;
-    }
-    
-    body.printing-pdf .header {
-      padding: 0.2rem;
-      margin-bottom: 0.2rem;
-      background: none;
-      box-shadow: none;
-    }
-    
-    body.printing-pdf .name {
-      font-size: 1.2rem;
-      margin-bottom: 0.3rem;
-    }
-    
-    body.printing-pdf .skills-section {
-      column-count: 2;
-      column-gap: 0.5rem;
-    }
-    
-    body.printing-pdf .skill-description {
-      display: none;
-    }
-    
-    body.printing-pdf .divider {
-      margin: 0.2rem 0;
-      height: 0;
-      border-top: 1px dashed rgba(196, 30, 58, 0.2);
-      background: none;
-    }
-    
-    body.printing-pdf .awards-section, 
-    body.printing-pdf .references-section {
-      column-count: 2;
-      column-gap: 0.3rem;
-    }
-    
-    body.printing-pdf h2 {
-      font-size: 1rem;
-      margin-top: 0.2rem;
-    }
+    /* Print styles are now used for both printing and PDF export */
     
     /* ===== RESPONSIVE STYLES ===== */
     @media (max-width: 768px) {
@@ -1808,9 +1750,6 @@
     </main>
   </div>
 
-  <!-- Include html2pdf.js library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  
   <!-- Scripts for functionality -->
   <script>
     // Progress bar
@@ -1821,50 +1760,25 @@
       document.getElementById("progressBar").style.width = scrolled + "%";
     };
     
-    // PDF Download
+    // PDF Download - use browser's print functionality with a filename
     document.getElementById('downloadBtn').addEventListener('click', function() {
       // Show loading indicator or message
       const btn = this;
       const originalText = btn.innerHTML;
-      btn.innerHTML = '<span>Generating PDF...</span>';
+      btn.innerHTML = '<span>Preparing PDF...</span>';
       btn.disabled = true;
       
-      // Add print class to body to trigger print styles
-      document.body.classList.add('printing-pdf');
-      
-      // Get the resume element
-      const element = document.querySelector('.resume');
-      
-      // Set options for PDF generation
-      const opt = {
-        margin: [0.15, 0.15, 0.15, 0.15],
-        filename: 'joseph_sakaya_resume.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { 
-          scale: 2, 
-          useCORS: true, 
-          letterRendering: true,
-          logging: false,
-          dpi: 192,
-          windowWidth: 1200 
-        },
-        jsPDF: { 
-          unit: 'in', 
-          format: 'letter', 
-          orientation: 'portrait',
-          compress: true
-        }
-      };
-      
-      // Generate and download PDF
-      html2pdf().from(element).set(opt).save().then(function() {
-        // Reset button after PDF is generated
+      // Create and set up a hidden link to trigger download
+      setTimeout(function() {
+        // Give browser time to update button text
+        window.print();
+        
+        // Reset button state
         setTimeout(function() {
           btn.innerHTML = originalText;
           btn.disabled = false;
-          document.body.classList.remove('printing-pdf');
         }, 1000);
-      });
+      }, 100);
     });
   </script>
 </body>
