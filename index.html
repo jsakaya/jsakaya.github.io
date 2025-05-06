@@ -1,126 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Website</title>
-    <style>
-        body {
-            font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-            background-color: #fffff8;
-            color: #111;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem;
-            counter-reset: sidenote-counter;
-        }
-        h1, h2, h3 {
-            font-weight: 400;
-            margin-top: 2.1rem;
-            margin-bottom: 1.4rem;
-            line-height: 1;
-        }
-        h1 { font-size: 3.2rem; }
-        h2 { font-size: 2.2rem; }
-        h3 { font-size: 1.7rem; }
-        p { font-size: 1.4rem; line-height: 2rem; margin-top: 1.4rem; margin-bottom: 1.4rem; padding-right: 0; vertical-align: baseline; }
-        a { color: #111; text-decoration: none; border-bottom: 1px solid #777; padding-bottom: 1px; }
-        a:hover { color: #777; border-bottom: none; }
-        header { margin-bottom: 4rem; }
-        nav { border-bottom: 1px solid #ccc; padding-bottom: 1rem; margin-bottom: 2rem; }
-        nav ul { list-style-type: none; padding: 0; }
-        nav ul li { display: inline; margin-right: 2rem; }
-        nav ul li a { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.1em; }
-        main { display: flex; position: relative; }
-        article { flex: 0 1 65%; max-width: 65%; padding-right: 2rem; }
-        aside { flex: 0 1 35%; font-size: 1.1rem; line-height: 1.6rem; }
-        .sidenote-number { counter-increment: sidenote-counter; }
-        .sidenote-number:after { content: counter(sidenote-counter); vertical-align: super; font-size: 0.8em; }
-        .sidenote {
-            float: right;
-            clear: right;
-            margin-right: -60%;
-            width: 50%;
-            margin-top: 0;
-            margin-bottom: 0;
-            font-size: 1.1rem;
-            line-height: 1.3;
-            vertical-align: baseline;
-            position: relative;
-            right: -55%;
-        }
-        .sidenote:before { content: counter(sidenote-counter) " "; font-size: 0.9em; top: -0.5rem; }
-        footer { margin-top: 4rem; border-top: 1px solid #ccc; padding-top: 1rem; font-size: 1.1rem; }
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            float: right;
-            margin-left: 20px;
-            margin-bottom: 20px;
-        }
-        @media (max-width: 1200px) {
-            main { display: block; }
-            article { max-width: 100%; padding-right: 0; }
-            aside { max-width: 100%; margin-top: 2rem; }
-            .sidenote {
-                float: none;
-                display: block;
-                margin: 1rem 0;
-                padding: 0.5rem;
-                border-left: 2px solid #ccc;
-                width: 100%;
-                right: 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Joseph Sakaya - Resume - Doctoral graduate in Computer Science with expertise in machine learning, probabilistic programming, and Bayesian inference">
+  <title>Joseph Sakaya - Resume</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <style>
+    @media print {
+      body { 
+        margin: 0;
+        padding: 0;
+        background-color: white;
+      }
+      .download-button {
+        display: none !important;
+      }
+      .resume-container {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+      }
+      @page {
+        size: letter;
+        margin: 0.5in;
+      }
+    }
+  </style>
 </head>
-<body>
-    <header>
-        <h1>Your Name</h1>
-        <p>Welcome to my personal website</p>
-    </header>
+<body class="bg-gray-100 font-serif">
+  <div class="flex justify-center py-8">
+    <button onclick="window.print()" class="download-button fixed top-4 right-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-lg flex items-center space-x-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+      <span>Download PDF</span>
+    </button>
     
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    
-    <main>
-        <article>
-            <section id="home">
-                <h2>Home</h2>
-                <p>Welcome to my personal website. Here you can learn more about me and my work. This layout is inspired by Edward Tufte's design principles, focusing on simplicity and readability.<span class="sidenote-number"></span><span class="sidenote">Edward Tufte is a pioneer in the field of data visualization and information design.</span></p>
-            </section>
-            
-            <section id="about">
-                <h2>About Me</h2>
-                <p>Write a brief introduction about yourself here. The Tufte-inspired layout allows for sidenotes, which can be used to provide additional context or interesting asides.<span class="sidenote-number"></span><span class="sidenote">Sidenotes are a key feature of Tufte's design, allowing for additional information without disrupting the main text flow.</span></p>
-            </section>
-            
-            <section id="portfolio">
-                <h2>Portfolio</h2>
-                <p>Showcase your projects or work samples here. The clean, content-focused layout helps highlight your work effectively.</p>
-            </section>
-            
-            <section id="contact">
-                <h2>Contact</h2>
-                <p>Provide your contact information or a contact form here. Remember, in a Tufte-inspired design, simplicity and clarity are key.</p>
-            </section>
-        </article>
+    <div class="resume-container bg-white w-full max-w-4xl shadow-xl rounded-lg overflow-hidden">
+      <div class="w-full px-8 py-6 text-gray-800 leading-relaxed">
+        <!-- Header -->
+        <header class="mb-8 text-center">
+          <h1 class="text-3xl font-bold uppercase tracking-wide mb-3 text-gray-900">Joseph Sakaya</h1>
+          <div class="flex flex-wrap justify-center items-center text-sm text-gray-700 mb-1 space-x-1">
+            <div class="px-3 py-1 flex items-center">
+              <span class="mr-1">📍</span> 12424 12th Ave SE, Everett, WA 98208
+            </div>
+          </div>
+          <div class="flex flex-wrap justify-center items-center text-sm mb-2 space-x-2">
+            <div class="px-3 flex items-center">
+              <span class="mr-1">📱</span> +1 (312) 826-2116
+            </div>
+            <div class="px-3 flex items-center">
+              <span class="mr-1">✉️</span> 
+              <a href="mailto:hosanna.joseph@gmail.com" class="text-blue-700 hover:underline">hosanna.joseph@gmail.com</a>
+            </div>
+            <div class="px-3 flex items-center">
+              <span class="mr-1">🔗</span> 
+              <a href="https://www.linkedin.com/in/sakaya" class="text-blue-700 hover:underline">linkedin.com/in/sakaya</a>
+            </div>
+          </div>
+        </header>
         
-        <aside>
-            <h3>Latest Updates</h3>
-            <p>This sidebar can be used for recent blog posts, quick links, or other supplementary information that doesn't fit in the main content area.</p>
-        </aside>
-    </main>
-    
-    <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
-    </footer>
+        <!-- Education Section -->
+        <section class="mb-7">
+          <h2 class="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1 mb-4 text-gray-900">Education</h2>
+          
+          <div class="mb-4">
+            <div class="flex flex-wrap justify-between mb-1">
+              <div class="font-bold text-gray-900">University of Helsinki</div>
+              <div class="text-gray-700">Helsinki, Finland</div>
+            </div>
+            <div class="flex flex-wrap justify-between">
+              <div class="font-medium">Doctoral Programme in Computer Science</div>
+              <div class="italic text-gray-600">January 2016 — March 2021</div>
+            </div>
+            <div class="mt-1 pl-4 border-l-2 border-gray-200">
+              Thesis: <a href="https://helda.helsinki.fi/bitstream/handle/10138/325149/sakaya_joseph_dissertation_2021.pdf" class="italic text-blue-700 hover:underline">From Approximations to Decisions</a>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <div class="flex flex-wrap justify-between mb-1">
+              <div class="font-bold text-gray-900">University of Helsinki</div>
+              <div class="text-gray-700">Helsinki, Finland</div>
+            </div>
+            <div class="flex flex-wrap justify-between">
+              <div class="font-medium">Master of Science, Algorithms & Machine Learning</div>
+              <div class="italic text-gray-600">September 2013 — December 2015</div>
+            </div>
+            <div class="mt-1 pl-4 border-l-2 border-gray-200">
+              <div>GPA: 5/5</div>
+              <div class="mt-1">
+                Thesis: <a href="https://helda.helsinki.fi/bitstream/handle/10138/159192/joseph_sakaya_thesis.pdf" class="italic text-blue-700 hover:underline">Scalable Bayesian Induction of Word Embeddings</a> 
+                <span class="italic ml-2 text-gray-700">eximia cum laude approbator (5/5)</span>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <div class="flex flex-wrap justify-between mb-1">
+              <div class="font-bold text-gray-900">College of Engineering, Guindy, Anna University</div>
+              <div class="text-gray-700">Chennai, India</div>
+            </div>
+            <div class="flex flex-wrap justify-between">
+              <div class="font-medium">Bachelor of Engineering, Computer Science & Engineering</div>
+              <div class="italic text-gray-600">August 2009 — May 2013</div>
+            </div>
+            <div class="mt-1 pl-4 border-l-2 border-gray-200">
+              <div>GPA: 8.89/10</div>
+              <div class="mt-1">
+                Thesis: <span class="italic">Metaphor Detection with Infinite Mixture Models</span> 
+                <span class="italic ml-2 text-gray-700">Grade: A (9/10)</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Publications Section -->
+        <section class="mb-7">
+          <h2 class="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1 mb-4 text-gray-900">Publications</h2>
+          <div class="pl-4 space-y-4">
+            <div class="text-sm">
+              <p class="mb-1">Kuśmierczyk, T., <span class="font-bold">Sakaya, J.</span>, & Klami, A. (2020). Correcting Predictions for Approximate Bayesian Inference. <span class="italic">In the 34th AAAI Conference on Artificial Intelligence.</span></p>
+            </div>
+            
+            <div class="text-sm">
+              <p class="mb-1">Kuśmierczyk, T., <span class="font-bold">Sakaya, J.</span>, & Klami, A. (2019). Variational Bayesian Decision-making for Continuous Utilities. <span class="italic">33rd Annual Conference on Neural Information Processing Systems (NeurIPS).</span></p>
+            </div>
+            
+            <div class="text-sm">
+              <p class="mb-1">Klami, A., Lagus, J., & <span class="font-bold">Sakaya, J.</span> (2018). Lambert Matrix Factorization. <span class="italic">European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML PKDD).</span></p>
+            </div>
+            
+            <div class="text-sm">
+              <p class="mb-1"><span class="font-bold">Sakaya, J.</span> & Klami, A. (2017). Importance Sampled Stochastic Optimization for Variational Inference. <span class="italic">Uncertainty in Artificial Intelligence (UAI).</span></p>
+            </div>
+            
+            <div class="text-sm">
+              <p class="mb-1"><span class="font-bold">Sakaya, J.</span> & Klami, A. (2016). Re-using Gradient Computations in Automatic Variational Inference. <span class="italic">NIPS Workshop on Approximate Bayesian Inference.</span></p>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section class="mb-7">
+          <h2 class="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1 mb-4 text-gray-900">Skills</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex">
+              <span class="font-bold text-gray-900 w-28">Languages:</span>
+              <span>Python, R, Unix shell</span>
+            </div>
+            <div class="flex">
+              <span class="font-bold text-gray-900 w-28">Frameworks:</span>
+              <span>TensorFlow, PyTorch, Keras, Jupyter</span>
+            </div>
+            <div class="flex col-span-1 md:col-span-2">
+              <span class="font-bold text-gray-900 w-28">Probabilistic Programming:</span>
+              <span>Stan, Numpyro, TensorFlow Probability, Autograd</span>
+            </div>
+            <div class="flex">
+              <span class="font-bold text-gray-900 w-28">Typesetting:</span>
+              <span>LaTeX</span>
+            </div>
+            <div class="flex">
+              <span class="font-bold text-gray-900 w-28">Visualization:</span>
+              <span>ggplot2, matplotlib</span>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section class="mb-7">
+          <h2 class="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1 mb-4 text-gray-900">Experience</h2>
+          
+          <div class="mb-6">
+            <div class="flex flex-wrap justify-between mb-1">
+              <div class="font-bold text-gray-900">Doctoral Student</div>
+              <div class="italic text-gray-600">January 2016 — March 2021</div>
+            </div>
+            <div class="flex flex-wrap justify-between">
+              <div class="font-medium">Multisource Probabilistic Inference Group</div>
+              <div class="text-gray-700">Helsinki Institute for Information Technology</div>
+            </div>
+            
+            <div class="mt-3 pl-4 border-l-2 border-gray-200">
+              <div class="italic mb-3">Thesis: From Approximations to Decisions</div>
+              
+              <div class="mb-3">
+                <h3 class="font-bold text-gray-800 mb-1">Research</h3>
+                <ol class="list-decimal ml-8 space-y-1">
+                  <li>Model-agnostic inference for probabilistic programming</li>
+                  <li>Improving and scaling up approximate inference methods</li>
+                  <li>Building more flexible families of variational approximations</li>
+                  <li>Calibrating approximate posterior for Bayesian decision making</li>
+                </ol>
+              </div>
+              
+              <div class="mb-3">
+                <h3 class="font-bold text-gray-800 mb-1">Thesis Supervision</h3>
+                <div class="ml-8">
+                  <div class="flex flex-wrap justify-between">
+                    <div>Energy regression for imaging calorimetry, <span class="italic">Vitória Barin Pacela</span></div>
+                    <div class="italic">Bachelor's thesis, 2019</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <h3 class="font-bold text-gray-800 mb-1">Teaching Assistant</h3>
+                <div class="ml-8 space-y-2">
+                  <div class="flex flex-wrap justify-between">
+                    <div>Probabilistic Factor Analysis Methods (course code: 582762)</div>
+                    <div class="italic">2016 & 2017</div>
+                  </div>
+                  <div class="flex flex-wrap justify-between">
+                    <div>Advanced Course in Machine Learning (course code: DATA12001)</div>
+                    <div class="italic">2018</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <div class="flex flex-wrap justify-between mb-1">
+              <div class="font-bold text-gray-900">Research Assistant</div>
+              <div class="italic text-gray-600">May 2014 — December 2015</div>
+            </div>
+            <div class="flex flex-wrap justify-between">
+              <div class="font-medium">Multisource Probabilistic Inference Group</div>
+              <div class="text-gray-700">Helsinki Institute for Information Technology</div>
+            </div>
+            <div class="mt-3 pl-4 border-l-2 border-gray-200">
+              Scaling up variational inference algorithms for Bayesian word embeddings — building non-conjugate Bayesian models for binary matrix factorization and using noise-contrastive estimation for scalability.
+            </div>
+          </div>
+        </section>
+        
+        <!-- Awards Section -->
+        <section>
+          <h2 class="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1 mb-4 text-gray-900">Awards</h2>
+          
+          <div>
+            <div class="flex flex-wrap justify-between mb-1">
+              <div class="font-bold text-gray-900">Doctoral Program in Computer Science Funding</div>
+              <div class="italic text-gray-600">January 2016 — December 2019</div>
+            </div>
+            <div class="font-medium text-gray-800 mb-1">University of Helsinki</div>
+            <div class="pl-4 border-l-2 border-gray-200">
+              Salaried position awarded to exceptional doctoral candidates for a period of 4 years to conduct research in the focus area of Data Analytics and Machine Learning.
+            </div>
+          </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="mt-8 text-right text-xs text-gray-500">
+          <div>Joseph Sakaya — Curriculum Vitae — Page 1</div>
+        </footer>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
