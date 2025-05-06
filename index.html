@@ -556,6 +556,16 @@
       font-size: var(--text-base);
     }
     
+    .achievement-list {
+      margin-left: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+    
+    .achievement-list li {
+      margin-bottom: var(--space-sm);
+      line-height: 1.5;
+    }
+    
     .academic-item {
       margin-bottom: var(--space-xs);
     }
@@ -1158,9 +1168,12 @@
                   </li>
                   <li>
                     <strong>Knowledge Transfer Initiative:</strong> 
-                    <p class="achievement-description">
-                      Led bi-weekly research seminars that enhanced probabilistic programming capabilities across the R&D team. Designed and delivered advanced workshops covering JAX automatic differentiation, stochastic variational inference, normalizing flows, and discrete variable reparameterization techniques. These efforts facilitated the adoption of cutting-edge methodologies—including Bayesian online natural gradients and specialized inference algorithms—that accelerated development cycles for Bayesian model iteration and experimentation.
-                    </p>
+                    <ul class="achievement-list">
+                      <li>Led bi-weekly research seminars that enhanced probabilistic programming capabilities across the R&D team</li>
+                      <li>Designed and delivered advanced workshops covering JAX automatic differentiation, stochastic variational inference, normalizing flows, and discrete variable reparameterization techniques</li>
+                      <li>Facilitated the adoption of cutting-edge methodologies including Bayesian online natural gradients and specialized inference algorithms</li>
+                      <li>Accelerated development cycles for Bayesian model iteration and experimentation</li>
+                    </ul>
                   </li>
                   <li>
                     <strong>AppOrchid Decision Net:</strong> Led architecture and implementation of a flagship Bayesian decision system, positioned as one of the company's two strategic commercial products:
