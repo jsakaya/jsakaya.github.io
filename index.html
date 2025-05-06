@@ -825,10 +825,11 @@
     /* ===== PRINT STYLES ===== */
     @media print {
       html {
-        font-size: 12pt;
+        font-size: 8pt;
       }
       
       body {
+        line-height: 1.4;
         background: white;
         color: black;
       }
@@ -840,6 +841,10 @@
       .resume {
         box-shadow: none;
         max-width: 100%;
+      }
+      
+      .resume-content {
+        padding: 0.5rem;
       }
       
       .download-btn, .progress-container {
@@ -854,6 +859,49 @@
         display: none;
       }
       
+      /* Compact spacing for print */
+      .section {
+        margin-bottom: 0.5rem;
+      }
+      
+      .divider {
+        margin: 0.5rem 0;
+      }
+      
+      .header {
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .summary {
+        padding: 0.5rem;
+        margin-bottom: 0.3rem;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 0.3rem;
+      }
+      
+      p, ul, ol {
+        margin-bottom: 0.3rem;
+      }
+      
+      .job-accomplishments li,
+      .achievement-list li,
+      .academic-item {
+        margin-bottom: 0.2rem;
+      }
+      
+      .publication-item {
+        margin-bottom: 0.3rem;
+        padding: 0.2rem;
+      }
+      
+      .experience-item, .education-item, .award-item {
+        margin-bottom: 0.5rem;
+        padding: 0.2rem;
+      }
+      
       .experience-item:hover, .education-item:hover, .publication-item:hover, .award-item:hover {
         transform: none;
         box-shadow: none;
@@ -865,13 +913,65 @@
         box-shadow: none;
       }
       
+      .contact-list {
+        gap: 0.3rem;
+      }
+      
+      .contact-item {
+        padding: 0.2rem 0.4rem;
+      }
+      
+      .skill-list {
+        gap: 0.2rem;
+      }
+      
+      .skill-tag {
+        padding: 0.1rem 0.5rem;
+        margin-bottom: 0.1rem;
+      }
+      
+      /* Optimize space */
+      .footer {
+        padding-top: 0.3rem;
+        margin-top: 0.5rem;
+      }
+      
+      /* Page setup */
       @page {
-        margin: 0.5in;
+        margin: 0.3in;
+        size: letter;
+      }
+      
+      .timeline {
+        padding-left: 20px; /* Reduce padding in timeline for print */
       }
       
       .timeline-dot {
+        left: -25px;
+        width: 8px;
+        height: 8px;
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
+      }
+      
+      .timeline-bar {
+        left: 0;
+        width: 1px;
+        opacity: 0.6;
+      }
+      
+      /* Force page break control */
+      .publications-section {
+        page-break-before: always;
+      }
+      
+      /* Ensure no orphaned headings */
+      h2 {
+        page-break-after: avoid;
+      }
+      
+      li {
+        page-break-inside: avoid;
       }
     }
     
@@ -1377,7 +1477,7 @@
         <div class="divider"></div>
         
         <!-- Publications Section -->
-        <section class="section">
+        <section class="section publications-section">
           <h2>Publications</h2>
           
           <div class="publication-item">
