@@ -825,11 +825,11 @@
     /* ===== PRINT STYLES ===== */
     @media print {
       html {
-        font-size: 8pt;
+        font-size: 6pt;
       }
       
       body {
-        line-height: 1.4;
+        line-height: 1.1;
         background: white;
         color: black;
       }
@@ -844,7 +844,7 @@
       }
       
       .resume-content {
-        padding: 0.5rem;
+        padding: 0.2rem;
       }
       
       .download-btn, .progress-container {
@@ -859,47 +859,92 @@
         display: none;
       }
       
-      /* Compact spacing for print */
+      /* Extreme compression for print */
       .section {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.2rem;
       }
       
       .divider {
-        margin: 0.5rem 0;
+        margin: 0.2rem 0;
+        height: 0;
+        border-top: 1px dashed rgba(196, 30, 58, 0.2);
+        background: none;
       }
       
       .header {
-        padding: 0.5rem;
-        margin-bottom: 0.5rem;
+        padding: 0.2rem;
+        margin-bottom: 0.2rem;
+        background: none;
+        box-shadow: none;
+      }
+      
+      .name {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+      }
+      
+      .name::after {
+        bottom: -8px;
+        height: 2px;
       }
       
       .summary {
-        padding: 0.5rem;
-        margin-bottom: 0.3rem;
+        padding: 0.3rem;
+        margin-bottom: 0.2rem;
+        border-width: 1px;
+        box-shadow: none;
+      }
+      
+      .summary-text {
+        line-height: 1.3;
       }
       
       h1, h2, h3, h4, h5, h6 {
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.2rem;
+        line-height: 1.1;
+      }
+      
+      h2 {
+        font-size: 1rem;
+        margin-top: 0.2rem;
+      }
+      
+      h2::after {
+        height: 1px;
       }
       
       p, ul, ol {
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.1rem;
+        margin-top: 0.1rem;
+      }
+      
+      ul, ol {
+        margin-left: 1rem;
+      }
+      
+      li {
+        margin-bottom: 0.05rem;
+        line-height: 1.2;
       }
       
       .job-accomplishments li,
       .achievement-list li,
       .academic-item {
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.05rem;
+      }
+      
+      .job-title {
+        font-size: 0.9rem;
       }
       
       .publication-item {
-        margin-bottom: 0.3rem;
-        padding: 0.2rem;
+        margin-bottom: 0.1rem;
+        padding: 0.1rem;
       }
       
       .experience-item, .education-item, .award-item {
-        margin-bottom: 0.5rem;
-        padding: 0.2rem;
+        margin-bottom: 0.2rem;
+        padding: 0.1rem;
       }
       
       .experience-item:hover, .education-item:hover, .publication-item:hover, .award-item:hover {
@@ -913,59 +958,184 @@
         box-shadow: none;
       }
       
+      /* Layout transformations */
+      .contact-container {
+        margin-top: 0.2rem;
+      }
+      
       .contact-list {
-        gap: 0.3rem;
+        gap: 0.1rem;
       }
       
       .contact-item {
-        padding: 0.2rem 0.4rem;
+        padding: 0.1rem 0.2rem;
+        border-left-width: 1px;
+      }
+      
+      .contact-icon {
+        margin-right: 0.1rem;
+        font-size: 0.9em;
+      }
+      
+      /* Skills section complete transformation for print */
+      .skills-section {
+        column-count: 2;
+        column-gap: 0.5rem;
+      }
+      
+      .skill-category {
+        margin-bottom: 0.1rem;
+        break-inside: avoid;
+      }
+      
+      .skill-heading {
+        margin-bottom: 0;
+        font-size: 0.7rem;
+        display: inline-block;
+        min-width: auto;
+      }
+      
+      .skill-heading::after {
+        content: ": ";
       }
       
       .skill-list {
-        gap: 0.2rem;
+        gap: 0.1rem;
+        display: inline;
       }
       
       .skill-tag {
-        padding: 0.1rem 0.5rem;
-        margin-bottom: 0.1rem;
+        padding: 0.05rem 0.2rem;
+        margin: 0 0.05rem 0 0;
+        font-size: 0.7em;
+        border-radius: 0.1rem;
       }
       
-      /* Optimize space */
-      .footer {
-        padding-top: 0.3rem;
-        margin-top: 0.5rem;
+      .skill-description {
+        display: none; /* Hide skill descriptions in print */
       }
       
-      /* Page setup */
-      @page {
-        margin: 0.3in;
-        size: letter;
-      }
-      
+      /* Timeline compression */
       .timeline {
-        padding-left: 20px; /* Reduce padding in timeline for print */
+        padding-left: 0.8rem;
       }
       
       .timeline-dot {
-        left: -25px;
-        width: 8px;
-        height: 8px;
+        left: -0.9rem;
+        width: 5px;
+        height: 5px;
+        top: 5px;
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
+        box-shadow: none;
+        border-width: 1px;
       }
       
       .timeline-bar {
         left: 0;
         width: 1px;
-        opacity: 0.6;
+        opacity: 0.3;
       }
       
-      /* Force page break control */
+      /* Print layout transformations */
+      .job-header, .edu-header {
+        margin-bottom: 0.1rem;
+      }
+      
+      .job-date, .job-location, .edu-date, .school-location {
+        font-size: 0.7rem;
+        margin-bottom: 0;
+      }
+      
+      .job-company, .degree {
+        margin-bottom: 0;
+      }
+      
+      .job-details, .edu-details {
+        margin-top: 0.1rem;
+      }
+      
+      .edu-details, .award-desc {
+        padding-left: 0.2rem;
+        border-left-width: 1px;
+      }
+      
+      .job-accomplishments, .achievement-list {
+        margin-left: 0.5rem;
+      }
+      
+      /* References printed more compact */
+      .references-list {
+        gap: 0.5rem;
+      }
+      
+      .reference-item {
+        padding: 0.1rem;
+      }
+      
+      /* Footer minimization */
+      .footer {
+        padding-top: 0.1rem;
+        margin-top: 0.2rem;
+        border-top-width: 1px;
+        font-size: 0.7rem;
+      }
+      
+      /* Page setup */
+      @page {
+        margin: 0.15in;
+        size: letter;
+      }
+      
+      /* Publication specific styles */
+      .pub-authors, .pub-title, .pub-venue {
+        margin-bottom: 0;
+        line-height: 1.2;
+      }
+      
+      /* Targeted content reductions */
+      .award-item .award-desc {
+        font-size: 0.8em;
+      }
+      
+      /* Create two-column layout for references and awards */
+      .awards-section, .references-section {
+        column-count: 2;
+        column-gap: 0.3rem;
+      }
+      
+      .award-item, .reference-item {
+        break-inside: avoid;
+      }
+      
+      /* Force publications onto page 2 */
       .publications-section {
         page-break-before: always;
       }
       
-      /* Ensure no orphaned headings */
+      /* Layout optimization for publications */
+      .publications-section .publication-item {
+        break-inside: avoid;
+      }
+      
+      /* Ensure education is on page 1 */
+      .education-section {
+        page-break-inside: avoid;
+      }
+      
+      /* Extreme layout transformations for print */
+      .contact-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      
+      .contact-item {
+        flex: 0 0 auto;
+        width: calc(50% - 0.1rem);
+      }
+      
+      /* Critical to prevent page overflow */
       h2 {
         page-break-after: avoid;
       }
@@ -1211,7 +1381,7 @@
         </header>
         
         <!-- Skills Section -->
-        <section class="section">
+        <section class="section skills-section">
           <h2>Skills</h2>
           
           <div class="skill-category">
@@ -1410,7 +1580,7 @@
         <div class="divider"></div>
         
         <!-- Education Section -->
-        <section class="section">
+        <section class="section education-section">
           <h2>Education</h2>
           
           <div class="education-item">
@@ -1514,7 +1684,7 @@
         <div class="divider"></div>
         
         <!-- Awards Section -->
-        <section class="section">
+        <section class="section awards-section">
           <h2>Awards</h2>
           
           <div class="award-item">
@@ -1536,7 +1706,7 @@
         <div class="divider"></div>
         
         <!-- References Section -->
-        <section class="section">
+        <section class="section references-section">
           <h2>References</h2>
           
           <div class="references-list">
