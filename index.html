@@ -139,15 +139,16 @@
     .skill-tag {
       background-color: var(--highlight);
       color: var(--primary-color);
-      padding: 0.25rem 0.75rem;
+      padding: 0.2rem 0.6rem;
       border-radius: 9999px;
       font-weight: 500;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
       border: 1px solid rgba(196, 30, 58, 0.1);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.15rem;
+      margin-right: 0.15rem;
     }
     
     .skill-tag:hover {
@@ -436,12 +437,11 @@
         <!-- Header with gradient background -->
         <header class="mb-8 text-center pb-6 animate-fadeInUp">
           <h1 class="text-5xl font-bold mb-4 text-gray-900 tracking-tight">Joseph Sakaya</h1>
-          <p class="text-xl text-gray-700 mb-6 font-light max-w-3xl mx-auto leading-relaxed">Applied scientist with 10+ years of experience developing machine‑learning and Bayesian inference solutions at scale</p>
           
           <!-- Professional Summary -->
           <div class="bg-gradient-to-r from-red-50 to-red-100 p-4 rounded-lg shadow-sm mb-6 max-w-3xl mx-auto">
             <p class="text-gray-800 leading-relaxed">
-              Machine learning scientist and researcher specializing in Bayesian methods, probabilistic programming, and variational inference. Expert in designing scalable inference algorithms for complex, large-scale probabilistic models and developing decision-making systems under uncertainty. Combining strong theoretical foundations with practical implementation skills to deliver real-world applications.
+              Applied scientist with 10+ years of experience specializing in Bayesian methods, probabilistic programming, and variational inference. Expert in designing scalable inference algorithms for complex probabilistic models and developing decision-making systems under uncertainty. Combining strong theoretical foundations with practical implementation skills to deliver real-world machine learning and Bayesian inference solutions at scale.
             </p>
           </div>
           
@@ -467,15 +467,15 @@
         <section class="mb-8 animate-fadeInUp delay-100">
           <h2 class="section-heading text-xl font-bold uppercase tracking-wide pb-2 mb-6 text-gray-900">Skills</h2>
           
-          <div class="flex flex-wrap gap-2 mb-4">
-            <div class="font-semibold text-gray-900 w-full mb-2">Languages:</div>
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            <div class="font-semibold text-gray-900 w-full mb-1">Languages:</div>
             <span class="skill-tag">Python</span>
             <span class="skill-tag">R</span>
             <span class="skill-tag">Unix Shell</span>
           </div>
           
-          <div class="flex flex-wrap gap-2 mb-4">
-            <div class="font-semibold text-gray-900 w-full mb-2">Frameworks:</div>
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            <div class="font-semibold text-gray-900 w-full mb-1">Frameworks:</div>
             <span class="skill-tag">TensorFlow</span>
             <span class="skill-tag">PyTorch</span>
             <span class="skill-tag">JAX</span>
@@ -484,15 +484,15 @@
             <span class="skill-tag">Jupyter</span>
           </div>
           
-          <div class="flex flex-wrap gap-2 mb-4">
-            <div class="font-semibold text-gray-900 w-full mb-2">Probabilistic Programming:</div>
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            <div class="font-semibold text-gray-900 w-full mb-1">Probabilistic Programming:</div>
             <span class="skill-tag">NumPyro</span>
             <span class="skill-tag">Stan</span>
             <span class="skill-tag">TensorFlow Probability</span>
           </div>
           
-          <div class="flex flex-wrap gap-2">
-            <div class="font-semibold text-gray-900 w-full mb-2">Tools:</div>
+          <div class="flex flex-wrap gap-1.5">
+            <div class="font-semibold text-gray-900 w-full mb-1">Tools:</div>
             <span class="skill-tag">LaTeX</span>
             <span class="skill-tag">ggplot2</span>
             <span class="skill-tag">matplotlib</span>
@@ -524,7 +524,10 @@
                 <h3 class="font-bold text-gray-800 mb-2">Projects</h3>
                 <ol class="list-decimal ml-5 space-y-3">
                   <li>
-                    Developed scalable Bayesian models for time-series analysis, including HMMs optimized for large-scale deployment, incorporating principles from <a href="https://www.alnurali.com/cvxstoc/" target="_blank" rel="noopener noreferrer">Ali et al. (2015)</a> for stochastic optimization in Bayesian decision-making.
+                    Developed scalable Bayesian models for time-series analysis, including HMM variants optimized for large-scale deployment, incorporating principles from <a href="https://www.alnurali.com/cvxstoc/" target="_blank" rel="noopener noreferrer">Ali et al. (2015)</a> for stochastic optimization in Bayesian decision-making.
+                  </li>
+                  <li>
+                    Led monthly research talks on advanced topics in variational inference, including Gumbel-Softmax for categorical replacements, Bayesian online natural gradient, normalizing flows, diffusion models, and flowmatching techniques.
                   </li>
                   <li>
                     <span class="font-semibold">AppOrchid Decision Net:</span> Architected and implemented a hybrid Bayesian decision network with the following key components:
