@@ -217,7 +217,7 @@
     }
     
     .section {
-      margin-bottom: var(--space-xl);
+      margin-bottom: var(--space-lg);
     }
     
     .divider {
@@ -229,7 +229,7 @@
         transparent 6px,
         transparent 12px
       );
-      margin: var(--space-xl) 0;
+      margin: var(--space-lg) 0;
       opacity: 0.6;
     }
     
@@ -343,7 +343,7 @@
     
     .experience-item {
       position: relative;
-      margin-bottom: var(--space-xl);
+      margin-bottom: var(--space-lg);
       padding: var(--space-sm);
       border-radius: var(--radius-md);
       transition: background-color var(--transition-normal), transform var(--transition-normal);
@@ -421,13 +421,22 @@
     
     .job-details h3 {
       font-size: var(--text-base);
-      margin-bottom: var(--space-sm);
+      margin-bottom: var(--space-xs);
+      margin-top: var(--space-md);
+    }
+    
+    .academic-item {
+      margin-bottom: var(--space-xs);
+    }
+    
+    .academic-item:last-child {
+      margin-bottom: 0;
     }
     
     /* ===== EDUCATION SECTION ===== */
     .education-item {
-      margin-bottom: var(--space-lg);
-      padding: var(--space-md);
+      margin-bottom: var(--space-md);
+      padding: var(--space-sm);
       border-radius: var(--radius-md);
       transition: background-color var(--transition-normal), transform var(--transition-normal);
     }
@@ -489,9 +498,9 @@
     
     /* ===== PUBLICATIONS SECTION ===== */
     .publication-item {
-      padding: var(--space-md);
+      padding: var(--space-sm);
       border-radius: var(--radius-md);
-      margin-bottom: var(--space-md);
+      margin-bottom: var(--space-sm);
       transition: background-color var(--transition-normal), transform var(--transition-normal);
     }
     
@@ -543,9 +552,14 @@
     
     /* ===== AWARDS SECTION ===== */
     .award-item {
-      padding: var(--space-md);
+      padding: var(--space-sm);
       border-radius: var(--radius-md);
       transition: background-color var(--transition-normal), transform var(--transition-normal);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .award-item:last-child {
+      margin-bottom: 0;
     }
     
     .award-item:hover {
@@ -988,19 +1002,16 @@
                 </ol>
                 
                 <h3>Thesis Supervision</h3>
-                <div>
-                  Energy regression for imaging calorimetry, <em>Vitória Barin Pacela</em>
-                  <div><em>Bachelor's thesis, 2019</em></div>
+                <div class="academic-item">
+                  <span>Energy regression for imaging calorimetry, <em>Vitória Barin Pacela</em> — <em>Bachelor's thesis, 2019</em></span>
                 </div>
                 
                 <h3>Teaching Assistant</h3>
-                <div>
-                  <div>Probabilistic Factor Analysis Methods (course code: 582762)</div>
-                  <div><em>2016 & 2017</em></div>
+                <div class="academic-item">
+                  <span>Probabilistic Factor Analysis Methods (course code: 582762) — <em>2016 & 2017</em></span>
                 </div>
-                <div style="margin-top: 0.5rem;">
-                  <div>Advanced Course in Machine Learning (course code: DATA12001)</div>
-                  <div><em>2018</em></div>
+                <div class="academic-item">
+                  <span>Advanced Course in Machine Learning (course code: DATA12001) — <em>2018</em></span>
                 </div>
               </div>
             </div>
