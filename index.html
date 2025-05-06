@@ -6,295 +6,438 @@
   <meta name="description" content="Joseph Sakaya - Resume - Doctoral graduate in Computer Science with expertise in machine learning, probabilistic programming, and Bayesian inference">
   <title>Joseph Sakaya - Resume</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap">
   <style>
+    :root {
+      --primary-color: #1a56db;
+      --secondary-color: #e5edff;
+      --accent-color: #3b82f6;
+      --text-primary: #1f2937;
+      --text-secondary: #4b5563;
+      --border-light: #e5e7eb;
+      --highlight: #dbeafe;
+    }
+    
+    body {
+      font-family: 'Lora', serif;
+      background-color: #f3f4f6;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .resume-container {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e5e7eb;
+    }
+    
+    .section-heading {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section-heading:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    }
+    
+    .experience-item, .education-item, .publication-item {
+      transition: all 0.3s ease;
+      border-radius: 0.375rem;
+    }
+    
+    .experience-item:hover, .education-item:hover, .publication-item:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+    
+    .skill-tag {
+      background-color: var(--highlight);
+      color: var(--primary-color);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+    
+    .skill-tag:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .timeline-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: var(--border-light);
+    }
+    
+    .timeline-point {
+      position: absolute;
+      left: -4px;
+      top: 24px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      border: 2px solid white;
+    }
+    
     @media print {
       body { 
         margin: 0;
         padding: 0;
         background-color: white;
       }
+      
       .download-button {
         display: none !important;
       }
+      
       .resume-container {
         box-shadow: none;
         margin: 0;
         padding: 0;
+        border: none;
       }
+      
       @page {
         size: letter;
         margin: 0.5in;
       }
+      
+      .experience-item:hover, .education-item:hover {
+        transform: none;
+        background-color: transparent;
+      }
     }
+    
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fadeInUp {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
   </style>
 </head>
-<body class="bg-gray-100 font-serif">
-  <div class="flex justify-center py-8">
-    <button onclick="window.print()" class="download-button fixed top-4 right-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-lg flex items-center space-x-2">
+<body>
+  <div class="py-10 px-4">
+    <button onclick="window.print()" class="download-button fixed top-4 right-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-lg flex items-center space-x-2 transition duration-300 z-50">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
       </svg>
       <span>Download PDF</span>
     </button>
     
-    <div class="resume-container bg-white w-full max-w-4xl shadow-xl rounded-lg overflow-hidden">
-      <div class="w-full px-8 py-6 text-gray-800 leading-relaxed">
-        <!-- Header -->
-        <header class="mb-8 text-center">
-          <h1 class="text-3xl font-bold uppercase tracking-wide mb-3 text-gray-900">Joseph Sakaya</h1>
-          <div class="flex flex-wrap justify-center items-center text-sm text-gray-700 mb-1 space-x-1">
-            <div class="px-3 py-1 flex items-center">
-              <span class="mr-1">📍</span> 12424 12th Ave SE, Everett, WA 98208
+    <div class="resume-container max-w-4xl mx-auto bg-white rounded-lg overflow-hidden animate-fadeInUp">
+      <div class="px-8 py-10">
+        <!-- Header with gradient background -->
+        <header class="mb-10 text-center pb-6 animate-fadeInUp">
+          <h1 class="text-4xl font-bold mb-3 text-gray-900">Joseph Sakaya</h1>
+          <p class="text-lg text-gray-700 mb-4 font-light">Doctoral Graduate in Machine Learning & Probabilistic Inference</p>
+          
+          <div class="flex flex-wrap justify-center gap-3 mb-4">
+            <div class="flex items-center px-3 py-1 rounded hover:bg-gray-100 transition-colors duration-200">
+              <span class="mr-2 text-blue-600">📍</span> 12424 12th Ave SE, Everett, WA 98208
             </div>
-          </div>
-          <div class="flex flex-wrap justify-center items-center text-sm mb-2 space-x-2">
-            <div class="px-3 flex items-center">
-              <span class="mr-1">📱</span> +1 (312) 826-2116
+            <div class="flex items-center px-3 py-1 rounded hover:bg-gray-100 transition-colors duration-200">
+              <span class="mr-2 text-blue-600">📱</span> +1 (312) 826-2116
             </div>
-            <div class="px-3 flex items-center">
-              <span class="mr-1">✉️</span> 
-              <a href="mailto:hosanna.joseph@gmail.com" class="text-blue-700 hover:underline">hosanna.joseph@gmail.com</a>
+            <div class="flex items-center px-3 py-1 rounded hover:bg-gray-100 transition-colors duration-200">
+              <span class="mr-2 text-blue-600">✉️</span> 
+              <a href="mailto:hosanna.joseph@gmail.com" class="text-blue-700 hover:text-blue-900 hover:underline transition-colors">hosanna.joseph@gmail.com</a>
             </div>
-            <div class="px-3 flex items-center">
-              <span class="mr-1">🔗</span> 
-              <a href="https://www.linkedin.com/in/sakaya" class="text-blue-700 hover:underline">linkedin.com/in/sakaya</a>
+            <div class="flex items-center px-3 py-1 rounded hover:bg-gray-100 transition-colors duration-200">
+              <span class="mr-2 text-blue-600">🔗</span> 
+              <a href="https://www.linkedin.com/in/sakaya" class="text-blue-700 hover:text-blue-900 hover:underline transition-colors">linkedin.com/in/sakaya</a>
             </div>
           </div>
         </header>
         
-        <!-- Education Section -->
-        <section class="mb-7">
-          <h2 class="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1 mb-4 text-gray-900">Education</h2>
+        <!-- Skills Section with tags -->
+        <section class="mb-10 animate-fadeInUp delay-100">
+          <h2 class="section-heading text-xl font-bold uppercase tracking-wide pb-2 mb-6 text-gray-900">Skills</h2>
           
-          <div class="mb-4">
-            <div class="flex flex-wrap justify-between mb-1">
-              <div class="font-bold text-gray-900">University of Helsinki</div>
-              <div class="text-gray-700">Helsinki, Finland</div>
-            </div>
-            <div class="flex flex-wrap justify-between">
-              <div class="font-medium">Doctoral Programme in Computer Science</div>
-              <div class="italic text-gray-600">January 2016 — March 2021</div>
-            </div>
-            <div class="mt-1 pl-4 border-l-2 border-gray-200">
-              Thesis: <a href="https://helda.helsinki.fi/bitstream/handle/10138/325149/sakaya_joseph_dissertation_2021.pdf" class="italic text-blue-700 hover:underline">From Approximations to Decisions</a>
-            </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <div class="font-semibold text-gray-900 w-full mb-2">Languages:</div>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">Unix Shell</span>
           </div>
           
-          <div class="mb-4">
-            <div class="flex flex-wrap justify-between mb-1">
-              <div class="font-bold text-gray-900">University of Helsinki</div>
-              <div class="text-gray-700">Helsinki, Finland</div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <div class="font-semibold text-gray-900 w-full mb-2">Frameworks:</div>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Keras</span>
+            <span class="skill-tag">Jupyter</span>
+          </div>
+          
+          <div class="flex flex-wrap gap-2 mb-4">
+            <div class="font-semibold text-gray-900 w-full mb-2">Probabilistic Programming:</div>
+            <span class="skill-tag">NumPyro</span>
+            <span class="skill-tag">JAX</span>
+            <span class="skill-tag">Stan</span>
+            <span class="skill-tag">TensorFlow Probability</span>
+            <span class="skill-tag">Autograd</span>
+          </div>
+          
+          <div class="flex flex-wrap gap-2">
+            <div class="font-semibold text-gray-900 w-full mb-2">Tools:</div>
+            <span class="skill-tag">LaTeX</span>
+            <span class="skill-tag">ggplot2</span>
+            <span class="skill-tag">matplotlib</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </section>
+        
+        <!-- Experience Section with timeline -->
+        <section class="mb-10 animate-fadeInUp delay-200">
+          <h2 class="section-heading text-xl font-bold uppercase tracking-wide pb-2 mb-6 text-gray-900">Experience</h2>
+          
+          <div class="relative">
+            <div class="timeline-bar"></div>
+            
+            <div class="experience-item mb-8 pl-8 relative">
+              <div class="timeline-point"></div>
+              <div class="flex flex-wrap justify-between mb-2">
+                <div class="font-bold text-gray-900 text-lg">Senior Data Scientist</div>
+                <div class="italic text-gray-600">March 2024 — Present</div>
+              </div>
+              <div class="flex flex-wrap justify-between mb-3">
+                <div class="font-medium text-blue-700">App Orchid Inc.</div>
+                <div class="text-gray-700">Redwood City, CA (Remote)</div>
+              </div>
+              
+              <div class="ml-1">
+                <h3 class="font-bold text-gray-800 mb-2">Projects</h3>
+                <ol class="list-decimal ml-5 space-y-3">
+                  <li>
+                    Developed scalable Bayesian models for time-series analysis, including HMMs optimized for large-scale deployment, incorporating principles from Ali et al. (2015) for Bayesian decision theory in stochastic optimization contexts.
+                  </li>
+                  <li>
+                    <span class="font-semibold">AppOrchid Decision Net:</span> Architected and implemented a hybrid Bayesian and decision network framework with the following key components:
+                    <ul class="list-disc ml-6 mt-2 space-y-2">
+                      <li>Core inference engine built on NumPyro with custom probabilistic programming abstractions for efficient posterior computation</li>
+                      <li>Automated DAG structure learning system leveraging both DECI (Directed Edge Conditional Independence) algorithms and LLM-assisted domain knowledge integration</li>
+                      <li>Stochastic variational inference (SVI) implementation with custom loss functions for Bayesian decision-making under uncertainty</li>
+                      <li>Interactive React-based frontend for visualizing probabilistic graphical models and running what-if scenarios</li>
+                      <li>Counterfactual analysis module supporting interventions and abduction for comprehensive causal reasoning</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="font-semibold">Technical Implementation:</span> The automodeler framework includes a FastAPI backend with specialized modules for model generation, decision optimization, DAG learning with causal discovery, and a React frontend for interactive model visualization and experimentation.
+                  </li>
+                </ol>
+              </div>
             </div>
-            <div class="flex flex-wrap justify-between">
-              <div class="font-medium">Master of Science, Algorithms & Machine Learning</div>
-              <div class="italic text-gray-600">September 2013 — December 2015</div>
+            
+            <div class="experience-item mb-8 pl-8 relative">
+              <div class="timeline-point"></div>
+              <div class="flex flex-wrap justify-between mb-2">
+                <div class="font-bold text-gray-900 text-lg">Primary Caregiver</div>
+                <div class="italic text-gray-600">March 2021 — March 2024</div>
+              </div>
+              <div class="ml-1">
+                Took time away from the workforce to prioritize family responsibilities, serving as the primary caregiver for two young children.
+              </div>
             </div>
-            <div class="mt-1 pl-4 border-l-2 border-gray-200">
-              <div>GPA: 5/5</div>
-              <div class="mt-1">
-                Thesis: <a href="https://helda.helsinki.fi/bitstream/handle/10138/159192/joseph_sakaya_thesis.pdf" class="italic text-blue-700 hover:underline">Scalable Bayesian Induction of Word Embeddings</a> 
-                <span class="italic ml-2 text-gray-700">eximia cum laude approbator (5/5)</span>
+            
+            <div class="experience-item mb-8 pl-8 relative">
+              <div class="timeline-point"></div>
+              <div class="flex flex-wrap justify-between mb-2">
+                <div class="font-bold text-gray-900 text-lg">Doctoral Student</div>
+                <div class="italic text-gray-600">January 2016 — March 2021</div>
+              </div>
+              <div class="flex flex-wrap justify-between mb-3">
+                <div class="font-medium text-blue-700">Multisource Probabilistic Inference Group</div>
+                <div class="text-gray-700">Helsinki Institute for Information Technology</div>
+              </div>
+              
+              <div class="ml-1">
+                <div class="italic mb-3">Thesis: <a href="https://helda.helsinki.fi/bitstream/handle/10138/325149/sakaya_joseph_dissertation_2021.pdf" class="text-blue-700 hover:underline">From Approximations to Decisions</a></div>
+                
+                <div class="mb-4">
+                  <h3 class="font-bold text-gray-800 mb-2">Research</h3>
+                  <ol class="list-decimal ml-5 space-y-2">
+                    <li>Model-agnostic inference for probabilistic programming</li>
+                    <li>Improving and scaling up approximate inference methods</li>
+                    <li>Building more flexible families of variational approximations</li>
+                    <li>Calibrating approximate posterior for Bayesian decision making</li>
+                  </ol>
+                </div>
+                
+                <div class="mb-4">
+                  <h3 class="font-bold text-gray-800 mb-2">Thesis Supervision</h3>
+                  <div class="ml-5">
+                    <div class="flex flex-wrap justify-between">
+                      <div>Energy regression for imaging calorimetry, <span class="italic">Vitória Barin Pacela</span></div>
+                      <div class="italic">Bachelor's thesis, 2019</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 class="font-bold text-gray-800 mb-2">Teaching Assistant</h3>
+                  <div class="ml-5 space-y-2">
+                    <div class="flex flex-wrap justify-between">
+                      <div>Probabilistic Factor Analysis Methods (course code: 582762)</div>
+                      <div class="italic">2016 & 2017</div>
+                    </div>
+                    <div class="flex flex-wrap justify-between">
+                      <div>Advanced Course in Machine Learning (course code: DATA12001)</div>
+                      <div class="italic">2018</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="experience-item pl-8 relative">
+              <div class="timeline-point"></div>
+              <div class="flex flex-wrap justify-between mb-2">
+                <div class="font-bold text-gray-900 text-lg">Research Assistant</div>
+                <div class="italic text-gray-600">May 2014 — December 2015</div>
+              </div>
+              <div class="flex flex-wrap justify-between mb-3">
+                <div class="font-medium text-blue-700">Multisource Probabilistic Inference Group</div>
+                <div class="text-gray-700">Helsinki Institute for Information Technology</div>
+              </div>
+              <div class="ml-1">
+                Scaling up variational inference algorithms for Bayesian word embeddings — building non-conjugate Bayesian models for binary matrix factorization and using noise-contrastive estimation for scalability.
               </div>
             </div>
           </div>
+        </section>
+        
+        <!-- Education Section with cards -->
+        <section class="mb-10 animate-fadeInUp delay-300">
+          <h2 class="section-heading text-xl font-bold uppercase tracking-wide pb-2 mb-6 text-gray-900">Education</h2>
           
-          <div>
-            <div class="flex flex-wrap justify-between mb-1">
-              <div class="font-bold text-gray-900">College of Engineering, Guindy, Anna University</div>
-              <div class="text-gray-700">Chennai, India</div>
+          <div class="space-y-6">
+            <div class="education-item p-4 rounded-lg">
+              <div class="flex flex-wrap justify-between mb-1">
+                <div class="font-bold text-gray-900 text-lg">University of Helsinki</div>
+                <div class="text-gray-700">Helsinki, Finland</div>
+              </div>
+              <div class="flex flex-wrap justify-between mb-2">
+                <div class="font-medium text-blue-700">Doctoral Programme in Computer Science</div>
+                <div class="italic text-gray-600">January 2016 — March 2021</div>
+              </div>
+              <div class="ml-1 border-l-2 border-blue-200 pl-4">
+                Thesis: <a href="https://helda.helsinki.fi/bitstream/handle/10138/325149/sakaya_joseph_dissertation_2021.pdf" class="italic text-blue-700 hover:text-blue-900 hover:underline transition-colors">From Approximations to Decisions</a>
+              </div>
             </div>
-            <div class="flex flex-wrap justify-between">
-              <div class="font-medium">Bachelor of Engineering, Computer Science & Engineering</div>
-              <div class="italic text-gray-600">August 2009 — May 2013</div>
+            
+            <div class="education-item p-4 rounded-lg">
+              <div class="flex flex-wrap justify-between mb-1">
+                <div class="font-bold text-gray-900 text-lg">University of Helsinki</div>
+                <div class="text-gray-700">Helsinki, Finland</div>
+              </div>
+              <div class="flex flex-wrap justify-between mb-2">
+                <div class="font-medium text-blue-700">Master of Science, Algorithms & Machine Learning</div>
+                <div class="italic text-gray-600">September 2013 — December 2015</div>
+              </div>
+              <div class="ml-1 border-l-2 border-blue-200 pl-4">
+                <div>GPA: 5/5</div>
+                <div class="mt-1">
+                  Thesis: <a href="https://helda.helsinki.fi/bitstream/handle/10138/159192/joseph_sakaya_thesis.pdf" class="italic text-blue-700 hover:text-blue-900 hover:underline transition-colors">Scalable Bayesian Induction of Word Embeddings</a> 
+                  <span class="italic ml-2 text-gray-700">eximia cum laude approbator (5/5)</span>
+                </div>
+              </div>
             </div>
-            <div class="mt-1 pl-4 border-l-2 border-gray-200">
-              <div>GPA: 8.89/10</div>
-              <div class="mt-1">
-                Thesis: <span class="italic">Metaphor Detection with Infinite Mixture Models</span> 
-                <span class="italic ml-2 text-gray-700">Grade: A (9/10)</span>
+            
+            <div class="education-item p-4 rounded-lg">
+              <div class="flex flex-wrap justify-between mb-1">
+                <div class="font-bold text-gray-900 text-lg">College of Engineering, Guindy, Anna University</div>
+                <div class="text-gray-700">Chennai, India</div>
+              </div>
+              <div class="flex flex-wrap justify-between mb-2">
+                <div class="font-medium text-blue-700">Bachelor of Engineering, Computer Science & Engineering</div>
+                <div class="italic text-gray-600">August 2009 — May 2013</div>
+              </div>
+              <div class="ml-1 border-l-2 border-blue-200 pl-4">
+                <div>GPA: 8.89/10</div>
+                <div class="mt-1">
+                  Thesis: <span class="italic">Metaphor Detection with Infinite Mixture Models</span> 
+                  <span class="italic ml-2 text-gray-700">Grade: A (9/10)</span>
+                </div>
               </div>
             </div>
           </div>
         </section>
         
         <!-- Publications Section -->
-        <section class="mb-7">
-          <h2 class="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1 mb-4 text-gray-900">Publications</h2>
-          <div class="pl-4 space-y-4">
-            <div class="text-sm">
-              <p class="mb-1">Kuśmierczyk, T., <span class="font-bold">Sakaya, J.</span>, & Klami, A. (2020). Correcting Predictions for Approximate Bayesian Inference. <span class="italic">In the 34th AAAI Conference on Artificial Intelligence.</span></p>
+        <section class="mb-10 animate-fadeInUp delay-400">
+          <h2 class="section-heading text-xl font-bold uppercase tracking-wide pb-2 mb-6 text-gray-900">Publications</h2>
+          <div class="space-y-3">
+            <div class="publication-item p-3 rounded-lg">
+              <p>Kuśmierczyk, T., <span class="font-bold">Sakaya, J.</span>, & Klami, A. (2020). Correcting Predictions for Approximate Bayesian Inference. <span class="italic">In the 34th AAAI Conference on Artificial Intelligence.</span></p>
             </div>
             
-            <div class="text-sm">
-              <p class="mb-1">Kuśmierczyk, T., <span class="font-bold">Sakaya, J.</span>, & Klami, A. (2019). Variational Bayesian Decision-making for Continuous Utilities. <span class="italic">33rd Annual Conference on Neural Information Processing Systems (NeurIPS).</span></p>
+            <div class="publication-item p-3 rounded-lg">
+              <p>Kuśmierczyk, T., <span class="font-bold">Sakaya, J.</span>, & Klami, A. (2019). Variational Bayesian Decision-making for Continuous Utilities. <span class="italic">33rd Annual Conference on Neural Information Processing Systems (NeurIPS).</span></p>
             </div>
             
-            <div class="text-sm">
-              <p class="mb-1">Klami, A., Lagus, J., & <span class="font-bold">Sakaya, J.</span> (2018). Lambert Matrix Factorization. <span class="italic">European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML PKDD).</span></p>
+            <div class="publication-item p-3 rounded-lg">
+              <p>Klami, A., Lagus, J., & <span class="font-bold">Sakaya, J.</span> (2018). Lambert Matrix Factorization. <span class="italic">European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML PKDD).</span></p>
             </div>
             
-            <div class="text-sm">
-              <p class="mb-1"><span class="font-bold">Sakaya, J.</span> & Klami, A. (2017). Importance Sampled Stochastic Optimization for Variational Inference. <span class="italic">Uncertainty in Artificial Intelligence (UAI).</span></p>
+            <div class="publication-item p-3 rounded-lg">
+              <p><span class="font-bold">Sakaya, J.</span> & Klami, A. (2017). Importance Sampled Stochastic Optimization for Variational Inference. <span class="italic">Uncertainty in Artificial Intelligence (UAI).</span></p>
             </div>
             
-            <div class="text-sm">
-              <p class="mb-1"><span class="font-bold">Sakaya, J.</span> & Klami, A. (2016). Re-using Gradient Computations in Automatic Variational Inference. <span class="italic">NIPS Workshop on Approximate Bayesian Inference.</span></p>
-            </div>
-          </div>
-        </section>
-        
-        <!-- Skills Section -->
-        <section class="mb-7">
-          <h2 class="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1 mb-4 text-gray-900">Skills</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="flex">
-              <span class="font-bold text-gray-900 w-28">Languages:</span>
-              <span>Python, R, Unix shell</span>
-            </div>
-            <div class="flex">
-              <span class="font-bold text-gray-900 w-28">Frameworks:</span>
-              <span>TensorFlow, PyTorch, Keras, Jupyter</span>
-            </div>
-            <div class="flex col-span-1 md:col-span-2">
-              <span class="font-bold text-gray-900 w-28">Probabilistic Programming:</span>
-              <span>Stan, NumPyro, TensorFlow Probability, Autograd, JAX</span>
-            </div>
-            <div class="flex">
-              <span class="font-bold text-gray-900 w-28">Typesetting:</span>
-              <span>LaTeX</span>
-            </div>
-            <div class="flex">
-              <span class="font-bold text-gray-900 w-28">Visualization:</span>
-              <span>ggplot2, matplotlib</span>
-            </div>
-          </div>
-        </section>
-        
-        <!-- Experience Section -->
-        <section class="mb-7">
-          <h2 class="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1 mb-4 text-gray-900">Experience</h2>
-          
-          <div class="mb-6">
-            <div class="flex flex-wrap justify-between mb-1">
-              <div class="font-bold text-gray-900">Senior Data Scientist</div>
-              <div class="italic text-gray-600">March 2024 — Present</div>
-            </div>
-            <div class="flex flex-wrap justify-between">
-              <div class="font-medium">App Orchid Inc.</div>
-              <div class="text-gray-700">Redwood City, CA (Remote)</div>
-            </div>
-            
-            <div class="mt-3 pl-4 border-l-2 border-gray-200">
-              <div class="mb-3">
-                <h3 class="font-bold text-gray-800 mb-1">Projects</h3>
-                <ol class="list-decimal ml-8 space-y-1">
-                  <li>Prototyped scalable Bayesian models, including scalable HMMs and applications of Bayesian decision theory for stochastic optimization (in the spirit of Ali et al., 2015)</li>
-                  <li>Developed AppOrchid Decision Net — a proof-of-concept hybrid Bayesian and decision network framework with the following features:
-                    <ul class="list-disc ml-8 mt-1 space-y-1">
-                      <li>NumPyro-based backend for Bayesian inference</li>
-                      <li>Auto-generated DAGs using DECI (Directed Edge Conditional Independence) and LLMs</li>
-                      <li>Stochastic optimization support for Bayesian decision-making</li>
-                      <li>What-if and counterfactual analysis capabilities</li>
-                    </ul>
-                  </li>
-                  <li>Technical implementation details available in the automodeler module</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-          
-          <div class="mb-6">
-            <div class="flex flex-wrap justify-between mb-1">
-              <div class="font-bold text-gray-900">Primary Caregiver</div>
-              <div class="italic text-gray-600">March 2021 — March 2024</div>
-            </div>
-            <div class="mt-3 pl-4 border-l-2 border-gray-200">
-              Took time away from the workforce to prioritize family responsibilities, serving as the primary caregiver for two young children.
-            </div>
-          </div>
-          
-          <div class="mb-6">
-            <div class="flex flex-wrap justify-between mb-1">
-              <div class="font-bold text-gray-900">Doctoral Student</div>
-              <div class="italic text-gray-600">January 2016 — March 2021</div>
-            </div>
-            <div class="flex flex-wrap justify-between">
-              <div class="font-medium">Multisource Probabilistic Inference Group</div>
-              <div class="text-gray-700">Helsinki Institute for Information Technology</div>
-            </div>
-            
-            <div class="mt-3 pl-4 border-l-2 border-gray-200">
-              <div class="italic mb-3">Thesis: From Approximations to Decisions</div>
-              
-              <div class="mb-3">
-                <h3 class="font-bold text-gray-800 mb-1">Research</h3>
-                <ol class="list-decimal ml-8 space-y-1">
-                  <li>Model-agnostic inference for probabilistic programming</li>
-                  <li>Improving and scaling up approximate inference methods</li>
-                  <li>Building more flexible families of variational approximations</li>
-                  <li>Calibrating approximate posterior for Bayesian decision making</li>
-                </ol>
-              </div>
-              
-              <div class="mb-3">
-                <h3 class="font-bold text-gray-800 mb-1">Thesis Supervision</h3>
-                <div class="ml-8">
-                  <div class="flex flex-wrap justify-between">
-                    <div>Energy regression for imaging calorimetry, <span class="italic">Vitória Barin Pacela</span></div>
-                    <div class="italic">Bachelor's thesis, 2019</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <h3 class="font-bold text-gray-800 mb-1">Teaching Assistant</h3>
-                <div class="ml-8 space-y-2">
-                  <div class="flex flex-wrap justify-between">
-                    <div>Probabilistic Factor Analysis Methods (course code: 582762)</div>
-                    <div class="italic">2016 & 2017</div>
-                  </div>
-                  <div class="flex flex-wrap justify-between">
-                    <div>Advanced Course in Machine Learning (course code: DATA12001)</div>
-                    <div class="italic">2018</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div>
-            <div class="flex flex-wrap justify-between mb-1">
-              <div class="font-bold text-gray-900">Research Assistant</div>
-              <div class="italic text-gray-600">May 2014 — December 2015</div>
-            </div>
-            <div class="flex flex-wrap justify-between">
-              <div class="font-medium">Multisource Probabilistic Inference Group</div>
-              <div class="text-gray-700">Helsinki Institute for Information Technology</div>
-            </div>
-            <div class="mt-3 pl-4 border-l-2 border-gray-200">
-              Scaling up variational inference algorithms for Bayesian word embeddings — building non-conjugate Bayesian models for binary matrix factorization and using noise-contrastive estimation for scalability.
+            <div class="publication-item p-3 rounded-lg">
+              <p><span class="font-bold">Sakaya, J.</span> & Klami, A. (2016). Re-using Gradient Computations in Automatic Variational Inference. <span class="italic">NIPS Workshop on Approximate Bayesian Inference.</span></p>
             </div>
           </div>
         </section>
         
         <!-- Awards Section -->
-        <section>
-          <h2 class="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1 mb-4 text-gray-900">Awards</h2>
+        <section class="animate-fadeInUp delay-500">
+          <h2 class="section-heading text-xl font-bold uppercase tracking-wide pb-2 mb-6 text-gray-900">Awards</h2>
           
-          <div>
-            <div class="flex flex-wrap justify-between mb-1">
-              <div class="font-bold text-gray-900">Doctoral Program in Computer Science Funding</div>
+          <div class="p-4 rounded-lg hover:bg-blue-50 transition-colors duration-200">
+            <div class="flex flex-wrap justify-between mb-2">
+              <div class="font-bold text-gray-900 text-lg">Doctoral Program in Computer Science Funding</div>
               <div class="italic text-gray-600">January 2016 — December 2019</div>
             </div>
-            <div class="font-medium text-gray-800 mb-1">University of Helsinki</div>
-            <div class="pl-4 border-l-2 border-gray-200">
+            <div class="font-medium text-blue-700 mb-1">University of Helsinki</div>
+            <div class="ml-1 border-l-2 border-blue-200 pl-4">
               Salaried position awarded to exceptional doctoral candidates for a period of 4 years to conduct research in the focus area of Data Analytics and Machine Learning.
             </div>
           </div>
         </section>
         
         <!-- Footer -->
-        <footer class="mt-8 text-right text-xs text-gray-500">
+        <footer class="mt-12 text-right text-sm text-gray-500 border-t pt-4 border-gray-200">
           <div>Joseph Sakaya — Curriculum Vitae — Last Updated: May 2024</div>
         </footer>
       </div>
