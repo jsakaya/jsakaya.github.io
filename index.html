@@ -2,140 +2,576 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Joseph Sakaya - Resume - Doctoral graduate in Computer Science with expertise in machine learning, probabilistic programming, and Bayesian inference">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1">
+  <meta name="description" content="Joseph Sakaya - Resume - Machine learning scientist specializing in Bayesian methods, probabilistic programming, and variational inference">
   <meta name="theme-color" content="#c41e3a">
-  <meta name="color-scheme" content="light dark">
-  <title>Joseph Sakaya - Resume</title>
-  
-  <!-- Preload critical fonts -->
-  <link rel="preload" href="https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787weuxJBkqt8ndeY9Z4.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap">
-  
+  <title>Joseph Sakaya | Resume</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ===== CSS RESET ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* ===== ROOT VARIABLES ===== */
     :root {
-      /* Color variables */
-      --primary: #c41e3a;
-      --primary-light: #e63946;
-      --primary-dark: #9a1626;
-      --secondary: #fdf0f0;
-      --secondary-dark: #eed3d7;
-      --text-primary: #2d2d2d;
-      --text-secondary: #4f4f4f;
-      --bg-primary: #f9f9f9;
-      --bg-secondary: #fff0f3;
+      /* Colors */
+      --red-primary: #c41e3a;
+      --red-dark: #9a1626;
+      --red-light: #e63946;
+      --red-bg: #fff0f3;
+      --red-border: #eed3d7;
+      
+      /* Text colors */
+      --text-dark: #2d2d2d;
+      --text-medium: #4f4f4f;
+      --text-light: #f5f5f5;
+      
+      /* Neutral colors */
+      --bg-light: #f9f9f9;
+      --white: #ffffff;
+      
+      /* Shadows */
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 8px rgba(196, 30, 58, 0.08);
+      --shadow-lg: 0 8px 16px rgba(196, 30, 58, 0.1);
       
       /* Spacing */
-      --spacing-xs: 0.25rem;
-      --spacing-sm: 0.5rem;
-      --spacing-md: 1rem;
-      --spacing-lg: 1.5rem;
-      --spacing-xl: 2rem;
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
       
-      /* Transition */
-      --transition: all 0.3s ease;
+      /* Border radius */
+      --radius-sm: 0.25rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-full: 9999px;
+      
+      /* Font sizes */
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.5rem;
+      --text-3xl: 2rem;
+      --text-4xl: 2.5rem;
+      
+      /* Font weights */
+      --font-normal: 400;
+      --font-medium: 500;
+      --font-semibold: 600;
+      --font-bold: 700;
+      
+      /* Animation */
+      --transition-fast: 150ms ease;
+      --transition-normal: 300ms ease;
     }
     
+    /* ===== DARK MODE ===== */
     @media (prefers-color-scheme: dark) {
       :root {
-        --primary: #e63946;
-        --primary-light: #ff6b6b;
-        --secondary: #2d1215;
-        --secondary-dark: #5a2e33;
-        --text-primary: #f9f9f9;
-        --text-secondary: #e0e0e0;
-        --bg-primary: #121212;
-        --bg-secondary: #4a151d;
-      }
-      
-      body {
-        background-color: var(--bg-primary);
+        --red-primary: #e63946;
+        --red-bg: #301418;
+        --red-border: #5a2e33;
+        --text-dark: #f5f5f5;
+        --text-medium: #d1d1d1;
+        --bg-light: #1a1a1a;
+        --white: #232323;
       }
     }
     
-    /* Base styles */
+    /* ===== BASE STYLES ===== */
     html {
       font-size: 16px;
       scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
     }
     
     body {
       font-family: 'Lora', serif;
-      color: var(--text-primary);
       line-height: 1.6;
-      background-color: var(--bg-primary);
-      background-image: 
-        radial-gradient(var(--secondary-dark) 1px, transparent 1px), 
-        radial-gradient(var(--secondary-dark) 1px, transparent 1px);
-      background-size: 50px 50px;
-      background-position: 0 0, 25px 25px;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
     }
     
-    h1, h2, h3, h4 {
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4, h5, h6 {
       font-family: 'Montserrat', sans-serif;
-      letter-spacing: -0.01em;
       line-height: 1.2;
+      margin-bottom: var(--space-md);
+      font-weight: var(--font-bold);
     }
     
     h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      letter-spacing: -0.025em;
-      margin-bottom: 1rem;
+      font-size: var(--text-3xl);
     }
     
     h2 {
-      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      font-size: var(--text-2xl);
       text-transform: uppercase;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: var(--space-xs);
+    }
+    
+    h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red-primary), var(--red-light));
+      border-radius: var(--radius-sm);
+    }
+    
+    p {
+      margin-bottom: var(--space-md);
     }
     
     a {
-      color: var(--primary);
+      color: var(--red-primary);
       text-decoration: none;
-      font-weight: 500;
-      transition: var(--transition);
+      transition: color var(--transition-normal);
       position: relative;
     }
     
     a:hover {
-      color: var(--primary-dark);
+      color: var(--red-dark);
     }
     
-    a:after {
+    a::after {
       content: '';
       position: absolute;
-      width: 0;
-      height: 1px;
-      bottom: 0;
-      left: 0;
-      background-color: var(--primary-dark);
-      transition: var(--transition);
-    }
-    
-    a:hover:after {
       width: 100%;
+      transform: scaleX(0);
+      height: 1px;
+      bottom: -2px;
+      left: 0;
+      background-color: var(--red-dark);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease-out;
     }
     
-    /* Main container */
-    .container {
-      max-width: 1200px;
+    a:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    
+    ul, ol {
+      margin-left: var(--space-lg);
+      margin-bottom: var(--space-md);
+    }
+    
+    li {
+      margin-bottom: var(--space-xs);
+    }
+    
+    /* ===== LAYOUT CONTAINERS ===== */
+    .page {
+      max-width: 100%;
       margin: 0 auto;
-      padding: 1.5rem 1rem;
+      padding: var(--space-md);
     }
     
-    @media (min-width: 768px) {
-      .container {
-        padding: 2rem;
-      }
+    .resume {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
     }
     
-    /* Progress bar */
+    .resume-content {
+      padding: var(--space-lg);
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .section {
+      margin-bottom: var(--space-xl);
+    }
+    
+    .divider {
+      height: 1px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--red-border),
+        var(--red-border) 6px,
+        transparent 6px,
+        transparent 12px
+      );
+      margin: var(--space-xl) 0;
+      opacity: 0.6;
+    }
+    
+    /* ===== HEADER COMPONENTS ===== */
+    .name {
+      font-size: var(--text-4xl);
+      margin-bottom: var(--space-sm);
+      color: var(--text-dark);
+    }
+    
+    .summary {
+      margin: var(--space-md) auto;
+      max-width: 90%;
+      background: linear-gradient(to right, #f8e1e5, var(--red-bg));
+      padding: var(--space-md);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .contact-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(to right, #f8e1e5, var(--red-bg));
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+      font-size: var(--text-sm);
+      max-width: 100%;
+    }
+    
+    .contact-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .contact-icon {
+      margin-right: var(--space-sm);
+      color: var(--red-primary);
+    }
+    
+    /* ===== SKILLS SECTION ===== */
+    .skill-category {
+      margin-bottom: var(--space-md);
+    }
+    
+    .skill-heading {
+      font-weight: var(--font-semibold);
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+    
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-left: 0;
+    }
+    
+    .skill-tag {
+      background-color: var(--red-bg);
+      color: var(--red-primary);
+      border-radius: var(--radius-full);
+      padding: var(--space-xs) var(--space-md);
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      transition: all var(--transition-normal);
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .skill-tag:hover {
+      background-color: var(--red-primary);
+      color: var(--text-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    /* ===== EXPERIENCE SECTION ===== */
+    .timeline {
+      position: relative;
+      padding-left: 28px; /* Adjust this value based on design needs */
+    }
+    
+    .timeline-bar {
+      position: absolute;
+      left: 0;
+      top: 10px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--red-primary), var(--red-light));
+      opacity: 0.6;
+      z-index: 1;
+    }
+    
+    .experience-item {
+      position: relative;
+      margin-bottom: var(--space-xl);
+      padding: var(--space-sm);
+      border-radius: var(--radius-md);
+      transition: background-color var(--transition-normal), transform var(--transition-normal);
+    }
+    
+    .experience-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .experience-item:hover {
+      background-color: var(--red-bg);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: -34px; /* Adjust based on your design */
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--red-primary), var(--red-light));
+      border: 2px solid var(--white);
+      box-shadow: 0 0 0 2px rgba(196, 30, 58, 0.2);
+      z-index: 10;
+    }
+    
+    .job-title {
+      font-weight: var(--font-bold);
+      font-size: var(--text-lg);
+      display: block;
+      margin-bottom: var(--space-xs);
+    }
+    
+    .job-date {
+      color: var(--text-medium);
+      font-style: italic;
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .job-company {
+      color: var(--red-primary);
+      font-weight: var(--font-medium);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .job-location {
+      color: var(--text-medium);
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-md);
+    }
+    
+    .job-details {
+      margin-top: var(--space-md);
+    }
+    
+    .job-details h3 {
+      font-size: var(--text-base);
+      margin-bottom: var(--space-sm);
+    }
+    
+    /* ===== EDUCATION SECTION ===== */
+    .education-item {
+      margin-bottom: var(--space-lg);
+      padding: var(--space-md);
+      border-radius: var(--radius-md);
+      transition: background-color var(--transition-normal), transform var(--transition-normal);
+    }
+    
+    .education-item:hover {
+      background-color: var(--red-bg);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .school-name {
+      font-weight: var(--font-bold);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .school-location {
+      color: var(--text-medium);
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .degree {
+      color: var(--red-primary);
+      font-weight: var(--font-medium);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .edu-date {
+      color: var(--text-medium);
+      font-style: italic;
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-md);
+    }
+    
+    .edu-details {
+      border-left: 2px solid var(--red-border);
+      padding-left: var(--space-md);
+      margin-top: var(--space-sm);
+    }
+    
+    /* ===== PUBLICATIONS SECTION ===== */
+    .publication-item {
+      padding: var(--space-md);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-md);
+      transition: background-color var(--transition-normal), transform var(--transition-normal);
+    }
+    
+    .publication-item:hover {
+      background-color: var(--red-bg);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .pub-authors {
+      display: block;
+      margin-bottom: var(--space-xs);
+    }
+    
+    .pub-title {
+      display: block;
+      margin-bottom: var(--space-xs);
+    }
+    
+    .pub-venue {
+      display: block;
+      font-style: italic;
+      margin-bottom: var(--space-sm);
+    }
+    
+    .citation-badge {
+      display: inline-flex;
+      align-items: center;
+      background-color: var(--red-bg);
+      border-radius: var(--radius-full);
+      padding: 2px 8px;
+      font-size: var(--text-xs);
+      color: var(--red-primary);
+      font-weight: var(--font-semibold);
+      transition: all var(--transition-normal);
+    }
+    
+    .citation-badge:hover {
+      background-color: var(--red-primary);
+      color: var(--text-light);
+      transform: scale(1.05);
+    }
+    
+    .citation-icon {
+      width: 12px;
+      height: 12px;
+      margin-right: 3px;
+    }
+    
+    /* ===== AWARDS SECTION ===== */
+    .award-item {
+      padding: var(--space-md);
+      border-radius: var(--radius-md);
+      transition: background-color var(--transition-normal), transform var(--transition-normal);
+    }
+    
+    .award-item:hover {
+      background-color: var(--red-bg);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .award-title {
+      font-weight: var(--font-bold);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .award-date {
+      color: var(--text-medium);
+      font-style: italic;
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .award-org {
+      color: var(--red-primary);
+      font-weight: var(--font-medium);
+      margin-bottom: var(--space-md);
+    }
+    
+    .award-desc {
+      border-left: 2px solid var(--red-border);
+      padding-left: var(--space-md);
+    }
+    
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: right;
+      color: var(--text-medium);
+      font-size: var(--text-sm);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--red-border);
+      margin-top: var(--space-lg);
+    }
+    
+    /* ===== UTILITY CLASSES ===== */
+    .text-bold {
+      font-weight: var(--font-bold);
+    }
+    
+    .text-italic {
+      font-style: italic;
+    }
+    
+    /* ===== DOWNLOAD BUTTON ===== */
+    .download-btn {
+      position: fixed;
+      top: var(--space-md);
+      right: var(--space-md);
+      background-color: var(--red-primary);
+      color: var(--text-light);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      border: none;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: var(--font-semibold);
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-normal);
+      z-index: 100;
+    }
+    
+    .download-btn:hover {
+      background-color: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .download-icon {
+      width: 18px;
+      height: 18px;
+    }
+    
+    /* ===== PROGRESS BAR ===== */
     .progress-container {
       position: fixed;
       top: 0;
@@ -148,463 +584,29 @@
     
     .progress-bar {
       height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      background: linear-gradient(90deg, var(--red-primary), var(--red-light));
       width: 0%;
-      box-shadow: 0 1px 3px rgba(196, 30, 58, 0.3);
+      transition: width 0.1s ease;
     }
     
-    /* Resume card */
-    .resume-card {
-      background: white;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 20px rgba(196, 30, 58, 0.08), 0 2px 8px rgba(0, 0, 0, 0.06);
-      overflow: hidden;
-      position: relative;
-      margin-bottom: 2rem;
-      border-top: 5px solid var(--primary);
-    }
-    
-    .resume-card-content {
-      padding: 1.5rem;
-    }
-    
-    @media (min-width: 640px) {
-      .resume-card-content {
-        padding: 2rem;
-      }
-    }
-    
-    /* Resume header */
-    .resume-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    
-    /* Profile summary card */
-    .profile-summary {
-      background: linear-gradient(to right, #f8e1e5, var(--secondary));
-      padding: 1.25rem;
-      border-radius: 0.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 6px rgba(196, 30, 58, 0.06);
-    }
-    
-    /* Contact cards */
-    .contact-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .contact-item {
-      display: flex;
-      align-items: center;
-      background: linear-gradient(to right, #f8e1e5, var(--secondary));
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.9rem;
-      box-shadow: 0 2px 6px rgba(196, 30, 58, 0.06);
-      transition: var(--transition);
-    }
-    
-    .contact-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(196, 30, 58, 0.1);
-    }
-    
-    .contact-icon {
-      color: var(--primary);
-      margin-right: 0.5rem;
-    }
-    
-    /* Section styles */
-    .section {
-      margin-bottom: 2rem;
-    }
-    
-    .section-heading {
-      position: relative;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.25rem;
-    }
-    
-    .section-heading:after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
-      border-radius: 3px;
-    }
-    
-    /* Skills section */
-    .skill-category {
-      margin-bottom: 1rem;
-    }
-    
-    .category-label {
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-    
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    
-    .skill-tag {
-      background-color: var(--bg-secondary);
-      color: var(--primary);
-      padding: 0.25rem 0.75rem;
-      border-radius: 999px;
-      font-weight: 500;
-      font-size: 0.85rem;
-      font-family: 'Montserrat', sans-serif;
-      transition: var(--transition);
-      border: 1px solid rgba(196, 30, 58, 0.1);
-    }
-    
-    .skill-tag:hover {
-      background-color: var(--primary);
-      color: white;
-      transform: translateY(-2px);
-    }
-    
-    /* Timeline styles */
-    .timeline {
-      position: relative;
-      padding-left: 1.5rem;
-    }
-    
-    .timeline-bar {
-      position: absolute;
-      left: 0;
-      top: 1.5rem;
-      bottom: 1.5rem;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--primary), var(--primary-light));
-      opacity: 0.6;
-      z-index: 1;
-    }
-    
-    /* Experience item */
-    .exp-item {
-      position: relative;
-      margin-bottom: 2rem;
-      transition: var(--transition);
-      border-radius: 0.5rem;
-      padding: 0.5rem;
-    }
-    
-    .exp-item:last-child {
-      margin-bottom: 0;
-    }
-    
-    .exp-item:hover {
-      background-color: var(--secondary);
-      box-shadow: 0 4px 12px rgba(196, 30, 58, 0.08);
-      transform: translateY(-2px);
-    }
-    
-    .exp-marker {
-      position: absolute;
-      left: -1.75rem;
-      top: 0.5rem;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      border: 2px solid white;
-      box-shadow: 0 0 0 2px rgba(196, 30, 58, 0.2), 0 0 0 5px white;
-      z-index: 10;
-    }
-    
-    .exp-header {
-      margin-bottom: 0.75rem;
-    }
-    
-    .exp-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-      display: block;
-    }
-    
-    .exp-date {
-      font-style: italic;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      display: block;
-      margin-top: 0.25rem;
-    }
-    
-    .exp-company {
-      color: var(--primary);
-      font-weight: 500;
-      display: block;
-      margin-top: 0.25rem;
-    }
-    
-    .exp-location {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      display: block;
-      margin-top: 0.25rem;
-    }
-    
-    /* Thesis details */
-    .thesis-title {
-      font-style: italic;
-      margin-bottom: 1rem;
-      display: block;
-    }
-    
-    .exp-content {
-      margin-top: 1rem;
-    }
-    
-    .exp-content h3 {
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      font-size: 1rem;
-    }
-    
-    .exp-content ol, .exp-content ul {
-      padding-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .exp-content ol {
-      list-style-type: decimal;
-    }
-    
-    .exp-content ul {
-      list-style-type: disc;
-    }
-    
-    .exp-content li {
-      margin-bottom: 0.5rem;
-    }
-    
-    /* Education section */
-    .edu-item {
-      margin-bottom: 1.5rem;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      transition: var(--transition);
-    }
-    
-    .edu-item:hover {
-      background-color: var(--secondary);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(196, 30, 58, 0.08);
-    }
-    
-    .edu-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-    
-    .edu-location {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin-top: 0.25rem;
-    }
-    
-    .edu-degree {
-      color: var(--primary);
-      font-weight: 500;
-      margin-top: 0.5rem;
-    }
-    
-    .edu-years {
-      font-style: italic;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin-top: 0.25rem;
-    }
-    
-    .edu-details {
-      margin-top: 0.75rem;
-      padding-left: 1rem;
-      border-left: 2px solid var(--secondary-dark);
-    }
-    
-    /* Publication section */
-    .pub-item {
-      padding: 1rem;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-      transition: var(--transition);
-    }
-    
-    .pub-item:hover {
-      background-color: var(--secondary);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(196, 30, 58, 0.08);
-    }
-    
-    .pub-authors {
-      margin-bottom: 0.25rem;
-      display: block;
-    }
-    
-    .pub-title {
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-    
-    .pub-venue {
-      font-style: italic;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    
-    .citation-badge {
-      display: inline-flex;
-      align-items: center;
-      background-color: var(--bg-secondary);
-      border-radius: 999px;
-      padding: 0.1rem 0.5rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--primary);
-      transition: var(--transition);
-    }
-    
-    .citation-badge:hover {
-      background-color: var(--primary);
-      color: white;
-      transform: scale(1.05);
-    }
-    
-    .citation-icon {
-      width: 14px;
-      height: 14px;
-      margin-right: 4px;
-    }
-    
-    /* Award section */
-    .award-item {
-      padding: 1rem;
-      border-radius: 0.5rem;
-      transition: var(--transition);
-    }
-    
-    .award-item:hover {
-      background-color: var(--secondary);
-      box-shadow: 0 4px 12px rgba(196, 30, 58, 0.08);
-    }
-    
-    .award-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-    
-    .award-date {
-      font-style: italic;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin-top: 0.25rem;
-    }
-    
-    .award-org {
-      color: var(--primary);
-      font-weight: 500;
-      margin-top: 0.5rem;
-    }
-    
-    .award-desc {
-      margin-top: 0.75rem;
-      padding-left: 1rem;
-      border-left: 2px solid var(--secondary-dark);
-    }
-    
-    /* Section divider */
-    .divider {
-      height: 1px;
-      background: repeating-linear-gradient(
-        90deg,
-        var(--secondary-dark),
-        var(--secondary-dark) 6px,
-        transparent 6px,
-        transparent 12px
-      );
-      margin: 2rem 0;
-      opacity: 0.5;
-    }
-    
-    /* Footer */
-    .footer {
-      text-align: right;
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      padding-top: 1rem;
-      border-top: 1px solid var(--secondary-dark);
-      margin-top: 2rem;
-    }
-    
-    /* Download button */
-    .download-btn {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background-color: var(--primary);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-weight: 700;
-      font-family: 'Montserrat', sans-serif;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 12px rgba(196, 30, 58, 0.2);
-      z-index: 50;
-      transition: var(--transition);
-    }
-    
-    .download-btn:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(196, 30, 58, 0.3);
-    }
-    
-    .download-icon {
-      width: 18px;
-      height: 18px;
-    }
-    
-    /* QR code for print only */
-    .qr-code {
-      display: none;
-    }
-    
-    /* Print styles */
+    /* ===== PRINT STYLES ===== */
     @media print {
       html {
         font-size: 12pt;
       }
       
       body {
-        background: white !important;
-        margin: 0;
-        padding: 0;
-        background-image: none !important;
+        background: white;
+        color: black;
       }
       
-      .container {
+      .page {
         padding: 0;
       }
       
-      .resume-card {
+      .resume {
         box-shadow: none;
-        margin: 0;
-        border: none;
+        max-width: 100%;
       }
       
       .download-btn, .progress-container {
@@ -612,209 +614,173 @@
       }
       
       a {
-        color: var(--text-primary);
-        text-decoration: none;
+        color: inherit;
       }
       
-      a:after {
+      a::after {
         display: none;
       }
       
-      .divider {
-        border-top: 1px dashed #e5e7eb;
-        background: none;
+      .experience-item:hover, .education-item:hover, .publication-item:hover, .award-item:hover {
+        transform: none;
+        box-shadow: none;
+        background-color: transparent;
       }
       
-      .qr-code {
-        display: block;
-        position: absolute;
-        bottom: 1rem;
-        right: 1rem;
-        width: 80px;
-        height: 80px;
+      .skill-tag:hover {
+        transform: none;
+        box-shadow: none;
       }
       
       @page {
-        size: letter;
         margin: 0.5in;
       }
-    }
-    
-    /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      
+      .timeline-dot {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
       }
     }
     
-    .fade-in {
-      animation: fadeIn 0.6s ease forwards;
-    }
-    
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-    .delay-4 { animation-delay: 0.4s; }
-    .delay-5 { animation-delay: 0.5s; }
-    
-    /* Prevent accidental horizontal scrolling */
-    body { overflow-x: hidden; }
-    
-    /* Responsive optimizations */
-    @media (max-width: 640px) {
-      /* Typography tweaks */
-      html { font-size: 14px; }
-      
-      /* Timeline: drop the left rail & markers to reclaim space */
-      .timeline { padding-left: 0; }
-      .timeline-bar,
-      .exp-marker { display: none; }
-      .exp-item { padding-left: 0; }
-      
-      /* Contact chips: make them full-width rows */
-      .contact-item { width: 100%; padding: 0.4rem 0.8rem; }
-      
-      /* Download button: move away from notches, shrink a little */
-      .download-btn {
-        top: auto;        /* un-fix from the status bar area */
-        bottom: 1rem;     /* stick to bottom-right instead */
-        right: 1rem;
-        padding: 0.4rem 0.75rem;
-        font-size: 0.8rem;
+    /* ===== RESPONSIVE STYLES ===== */
+    @media (max-width: 768px) {
+      .page {
+        padding: var(--space-sm);
       }
       
-      .edu-details, .award-desc {
-        padding-left: 0.75rem;
+      .resume-content {
+        padding: var(--space-md);
       }
       
-      .exp-content ol, .exp-content ul {
-        padding-left: 1.25rem;
+      .contact-list {
+        flex-direction: column;
+        gap: var(--space-xs);
       }
       
-      .citation-badge {
-        font-size: 0.7rem;
-        padding: 0.1rem 0.4rem;
-      }
-      
-      .citation-icon {
-        width: 12px;
-        height: 12px;
-      }
-    }
-    
-    /* ------------------ ≤ 375 px ------------------ */
-    @media (max-width: 375px) {
-      html { font-size: 13px; }
-      
-      .resume-card-content {
-        padding: 1.25rem 1rem;
+      .contact-item {
+        width: 100%;
       }
       
       h1 {
-        font-size: 1.8rem;
+        font-size: var(--text-3xl);
+      }
+    }
+    
+    @media (max-width: 640px) {
+      html {
+        font-size: 15px;
+      }
+      
+      .name {
+        font-size: var(--text-3xl);
+      }
+      
+      .summary {
+        max-width: 100%;
+      }
+      
+      /* Hide timeline on small screens to save space */
+      .timeline {
+        padding-left: 0;
+      }
+      
+      .timeline-bar, .timeline-dot {
+        display: none;
+      }
+      
+      /* Move download button to bottom of screen */
+      .download-btn {
+        top: auto;
+        bottom: var(--space-md);
+        right: var(--space-md);
+        font-size: var(--text-sm);
+        padding: var(--space-xs) var(--space-md);
+      }
+      
+      .education-item, .experience-item, .publication-item, .award-item {
+        padding: var(--space-sm);
+      }
+      
+      .edu-details, .award-desc {
+        padding-left: var(--space-sm);
+      }
+    }
+    
+    @media (max-width: 375px) {
+      html {
+        font-size: 14px;
+      }
+      
+      .resume-content {
+        padding: var(--space-sm);
+      }
+      
+      .name {
+        font-size: var(--text-2xl);
+      }
+      
+      .publication-item, .education-item, .award-item {
+        padding: var(--space-xs);
       }
     }
   </style>
-  
-  <!-- Structured Data for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org/",
-    "@type": "Person",
-    "name": "Joseph Sakaya",
-    "url": "https://jsakaya.github.io/",
-    "image": "",
-    "sameAs": [
-      "https://www.linkedin.com/in/sakaya",
-      "https://scholar.google.com/citations?user=BcsixfAAAAAJ"
-    ],
-    "jobTitle": "Senior Data Scientist",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "App Orchid Inc."
-    },
-    "alumniOf": [
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "University of Helsinki",
-        "sameAs": "https://www.helsinki.fi/en"
-      },
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "Anna University",
-        "sameAs": "https://www.annauniv.edu/"
-      }
-    ],
-    "knowsAbout": ["Bayesian inference", "Probabilistic programming", "Machine learning", "Variational inference", "Stochastic optimization"],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Everett",
-      "addressRegion": "WA",
-      "postalCode": "98208",
-      "addressCountry": "US"
-    }
-  }
-  </script>
 </head>
 <body>
-  <!-- Scroll Progress Indicator -->
+  <!-- Progress Bar -->
   <div class="progress-container">
     <div class="progress-bar" id="progressBar"></div>
   </div>
-
+  
   <!-- Download Button -->
-  <button onclick="window.print()" class="download-btn">
+  <button class="download-btn" onclick="window.print()">
     <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
     </svg>
     <span>Download PDF</span>
   </button>
-
-  <div class="container">
-    <div class="resume-card fade-in">
-      <div class="resume-card-content">
-        <!-- Header with Name and Intro -->
-        <header class="resume-header">
-          <h1>Joseph Sakaya</h1>
+  
+  <div class="page">
+    <main class="resume">
+      <div class="resume-content">
+        <!-- Header Section -->
+        <header class="header">
+          <h1 class="name">Joseph Sakaya</h1>
           
-          <!-- Professional Summary -->
-          <div class="profile-summary">
+          <!-- Summary -->
+          <div class="summary">
             <p>
               Applied scientist with 10+ years of experience specializing in Bayesian methods, probabilistic programming, and variational inference. Expert in designing scalable inference algorithms for complex probabilistic models and developing decision-making systems under uncertainty. Combining strong theoretical foundations with practical implementation skills to deliver real-world machine learning and Bayesian inference solutions at scale.
             </p>
           </div>
           
-          <!-- Contact Information -->
+          <!-- Contact Info -->
           <div class="contact-list">
             <div class="contact-item">
-              <span class="contact-icon">📍</span> 12424 12th Ave SE, Everett, WA 98208
+              <span class="contact-icon">📍</span>
+              12424 12th Ave SE, Everett, WA 98208
             </div>
             <div class="contact-item">
-              <span class="contact-icon">📱</span> +1 (312) 826-2116
+              <span class="contact-icon">📱</span>
+              +1 (312) 826-2116
             </div>
             <div class="contact-item">
-              <span class="contact-icon">✉️</span> 
-              <a href="mailto:hosanna.joseph@gmail.com" aria-label="Email Joseph Sakaya">hosanna.joseph@gmail.com</a>
+              <span class="contact-icon">✉️</span>
+              <a href="mailto:hosanna.joseph@gmail.com">hosanna.joseph@gmail.com</a>
             </div>
             <div class="contact-item">
-              <span class="contact-icon">🔗</span> 
-              <a href="https://www.linkedin.com/in/sakaya" aria-label="LinkedIn profile">linkedin.com/in/sakaya</a>
+              <span class="contact-icon">🔗</span>
+              <a href="https://www.linkedin.com/in/sakaya">linkedin.com/in/sakaya</a>
             </div>
           </div>
         </header>
         
         <!-- Skills Section -->
-        <section class="section fade-in delay-1">
-          <h2 class="section-heading">Skills</h2>
+        <section class="section">
+          <h2>Skills</h2>
           
           <div class="skill-category">
-            <span class="category-label">Languages:</span>
-            <div class="skill-tags">
+            <span class="skill-heading">Languages:</span>
+            <div class="skill-list">
               <span class="skill-tag">Python</span>
               <span class="skill-tag">R</span>
               <span class="skill-tag">Unix Shell</span>
@@ -822,8 +788,8 @@
           </div>
           
           <div class="skill-category">
-            <span class="category-label">Frameworks:</span>
-            <div class="skill-tags">
+            <span class="skill-heading">Frameworks:</span>
+            <div class="skill-list">
               <span class="skill-tag">TensorFlow</span>
               <span class="skill-tag">PyTorch</span>
               <span class="skill-tag">JAX</span>
@@ -834,8 +800,8 @@
           </div>
           
           <div class="skill-category">
-            <span class="category-label">Probabilistic Programming:</span>
-            <div class="skill-tags">
+            <span class="skill-heading">Probabilistic Programming:</span>
+            <div class="skill-list">
               <span class="skill-tag">NumPyro</span>
               <span class="skill-tag">Stan</span>
               <span class="skill-tag">TensorFlow Probability</span>
@@ -843,8 +809,8 @@
           </div>
           
           <div class="skill-category">
-            <span class="category-label">Tools:</span>
-            <div class="skill-tags">
+            <span class="skill-heading">Tools:</span>
+            <div class="skill-list">
               <span class="skill-tag">LaTeX</span>
               <span class="skill-tag">ggplot2</span>
               <span class="skill-tag">matplotlib</span>
@@ -852,27 +818,25 @@
             </div>
           </div>
         </section>
-
+        
         <div class="divider"></div>
         
         <!-- Experience Section -->
-        <section class="section fade-in delay-2">
-          <h2 class="section-heading">Experience</h2>
+        <section class="section">
+          <h2>Experience</h2>
           
           <div class="timeline">
             <div class="timeline-bar"></div>
             
             <!-- Senior Data Scientist -->
-            <div class="exp-item">
-              <div class="exp-marker"></div>
-              <div class="exp-header">
-                <span class="exp-title">Senior Data Scientist</span>
-                <span class="exp-date">March 2024 — Present</span>
-                <span class="exp-company">App Orchid Inc.</span>
-                <span class="exp-location">San Ramon, CA (Remote)</span>
-              </div>
+            <div class="experience-item">
+              <div class="timeline-dot"></div>
+              <div class="job-title">Senior Data Scientist</div>
+              <div class="job-date">March 2024 — Present</div>
+              <div class="job-company">App Orchid Inc.</div>
+              <div class="job-location">San Ramon, CA (Remote)</div>
               
-              <div class="exp-content">
+              <div class="job-details">
                 <h3>Projects</h3>
                 <ol>
                   <li>
@@ -895,31 +859,28 @@
             </div>
             
             <!-- Primary Caregiver -->
-            <div class="exp-item">
-              <div class="exp-marker"></div>
-              <div class="exp-header">
-                <span class="exp-title">Primary Caregiver</span>
-                <span class="exp-date">March 2021 — March 2024</span>
-              </div>
-              <div class="exp-content">
+            <div class="experience-item">
+              <div class="timeline-dot"></div>
+              <div class="job-title">Primary Caregiver</div>
+              <div class="job-date">March 2021 — March 2024</div>
+              
+              <div class="job-details">
                 <p>Took time away from the workforce to prioritize family responsibilities, serving as the primary caregiver for two young children.</p>
               </div>
             </div>
             
             <!-- Doctoral Student -->
-            <div class="exp-item">
-              <div class="exp-marker"></div>
-              <div class="exp-header">
-                <span class="exp-title">Doctoral Student</span>
-                <span class="exp-date">January 2016 — March 2021</span>
-                <span class="exp-company">Multisource Probabilistic Inference Group</span>
-                <span class="exp-location">Helsinki Institute for Information Technology</span>
-              </div>
+            <div class="experience-item">
+              <div class="timeline-dot"></div>
+              <div class="job-title">Doctoral Student</div>
+              <div class="job-date">January 2016 — March 2021</div>
+              <div class="job-company">Multisource Probabilistic Inference Group</div>
+              <div class="job-location">Helsinki Institute for Information Technology</div>
               
-              <div class="exp-content">
-                <span class="thesis-title">
+              <div class="job-details">
+                <p class="text-italic">
                   Thesis: <a href="https://helda.helsinki.fi/bitstream/handle/10138/325149/sakaya_joseph_dissertation_2021.pdf">From Approximations to Decisions</a>
-                </span>
+                </p>
                 
                 <h3>Research</h3>
                 <ol>
@@ -948,42 +909,41 @@
             </div>
             
             <!-- Research Assistant -->
-            <div class="exp-item">
-              <div class="exp-marker"></div>
-              <div class="exp-header">
-                <span class="exp-title">Research Assistant</span>
-                <span class="exp-date">May 2014 — December 2015</span>
-                <span class="exp-company">Multisource Probabilistic Inference Group</span>
-                <span class="exp-location">Helsinki Institute for Information Technology</span>
-              </div>
-              <div class="exp-content">
+            <div class="experience-item">
+              <div class="timeline-dot"></div>
+              <div class="job-title">Research Assistant</div>
+              <div class="job-date">May 2014 — December 2015</div>
+              <div class="job-company">Multisource Probabilistic Inference Group</div>
+              <div class="job-location">Helsinki Institute for Information Technology</div>
+              
+              <div class="job-details">
                 <p>Scaling up variational inference algorithms for Bayesian word embeddings — building non-conjugate Bayesian models for binary matrix factorization and using noise-contrastive estimation for scalability.</p>
               </div>
             </div>
           </div>
         </section>
-
+        
         <div class="divider"></div>
         
         <!-- Education Section -->
-        <section class="section fade-in delay-3">
-          <h2 class="section-heading">Education</h2>
+        <section class="section">
+          <h2>Education</h2>
           
-          <div class="edu-item">
-            <div class="edu-title">University of Helsinki</div>
-            <div class="edu-location">Helsinki, Finland</div>
-            <div class="edu-degree">Doctoral Programme in Computer Science</div>
-            <div class="edu-years">January 2016 — March 2021</div>
+          <div class="education-item">
+            <div class="school-name">University of Helsinki</div>
+            <div class="school-location">Helsinki, Finland</div>
+            <div class="degree">Doctoral Programme in Computer Science</div>
+            <div class="edu-date">January 2016 — March 2021</div>
             <div class="edu-details">
-              Thesis: <a href="https://helda.helsinki.fi/bitstream/handle/10138/325149/sakaya_joseph_dissertation_2021.pdf" class="italic">From Approximations to Decisions</a>
+              Thesis: <a href="https://helda.helsinki.fi/bitstream/handle/10138/325149/sakaya_joseph_dissertation_2021.pdf" class="text-italic">From Approximations to Decisions</a>
             </div>
           </div>
           
-          <div class="edu-item">
-            <div class="edu-title">University of Helsinki</div>
-            <div class="edu-location">Helsinki, Finland</div>
-            <div class="edu-degree">Master of Science, Algorithms & Machine Learning</div>
-            <div class="edu-years">September 2013 — December 2015</div>
+          <div class="education-item">
+            <div class="school-name">University of Helsinki</div>
+            <div class="school-location">Helsinki, Finland</div>
+            <div class="degree">Master of Science, Algorithms & Machine Learning</div>
+            <div class="edu-date">September 2013 — December 2015</div>
             <div class="edu-details">
               <div>GPA: 5/5</div>
               <div style="margin-top: 0.5rem;">
@@ -993,11 +953,11 @@
             </div>
           </div>
           
-          <div class="edu-item">
-            <div class="edu-title">College of Engineering, Guindy, Anna University</div>
-            <div class="edu-location">Chennai, India</div>
-            <div class="edu-degree">Bachelor of Engineering, Computer Science & Engineering</div>
-            <div class="edu-years">August 2009 — May 2013</div>
+          <div class="education-item">
+            <div class="school-name">College of Engineering, Guindy, Anna University</div>
+            <div class="school-location">Chennai, India</div>
+            <div class="degree">Bachelor of Engineering, Computer Science & Engineering</div>
+            <div class="edu-date">August 2009 — May 2013</div>
             <div class="edu-details">
               <div>GPA: 8.89/10</div>
               <div style="margin-top: 0.5rem;">
@@ -1007,15 +967,15 @@
             </div>
           </div>
         </section>
-
+        
         <div class="divider"></div>
         
         <!-- Publications Section -->
-        <section class="section fade-in delay-4">
-          <h2 class="section-heading">Publications</h2>
+        <section class="section">
+          <h2>Publications</h2>
           
-          <div class="pub-item">
-            <span class="pub-authors">Kuśmierczyk, T., <strong>Sakaya, J.</strong>, & Klami, A. (2020).</span>
+          <div class="publication-item">
+            <span class="pub-authors">Kuśmierczyk, T., <span class="text-bold">Sakaya, J.</span>, & Klami, A. (2020).</span>
             <span class="pub-title">Correcting Predictions for Approximate Bayesian Inference.</span>
             <span class="pub-venue">In the 34th AAAI Conference on Artificial Intelligence.</span>
             <div class="citation-badge" title="Citation count">
@@ -1028,8 +988,8 @@
             </div>
           </div>
           
-          <div class="pub-item">
-            <span class="pub-authors">Kuśmierczyk, T., <strong>Sakaya, J.</strong>, & Klami, A. (2019).</span>
+          <div class="publication-item">
+            <span class="pub-authors">Kuśmierczyk, T., <span class="text-bold">Sakaya, J.</span>, & Klami, A. (2019).</span>
             <span class="pub-title">Variational Bayesian Decision-making for Continuous Utilities.</span>
             <span class="pub-venue">33rd Annual Conference on Neural Information Processing Systems (NeurIPS).</span>
             <div class="citation-badge" title="Citation count">
@@ -1042,8 +1002,8 @@
             </div>
           </div>
           
-          <div class="pub-item">
-            <span class="pub-authors">Klami, A., Lagus, J., & <strong>Sakaya, J.</strong> (2018).</span>
+          <div class="publication-item">
+            <span class="pub-authors">Klami, A., Lagus, J., & <span class="text-bold">Sakaya, J.</span> (2018).</span>
             <span class="pub-title">Lambert Matrix Factorization.</span>
             <span class="pub-venue">European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML PKDD).</span>
             <div class="citation-badge" title="Citation count">
@@ -1056,8 +1016,8 @@
             </div>
           </div>
           
-          <div class="pub-item">
-            <span class="pub-authors"><strong>Sakaya, J.</strong> & Klami, A. (2017).</span>
+          <div class="publication-item">
+            <span class="pub-authors"><span class="text-bold">Sakaya, J.</span> & Klami, A. (2017).</span>
             <span class="pub-title">Importance Sampled Stochastic Optimization for Variational Inference.</span>
             <span class="pub-venue">Uncertainty in Artificial Intelligence (UAI).</span>
             <div class="citation-badge" title="Citation count">
@@ -1070,8 +1030,8 @@
             </div>
           </div>
           
-          <div class="pub-item">
-            <span class="pub-authors"><strong>Sakaya, J.</strong> & Klami, A. (2016).</span>
+          <div class="publication-item">
+            <span class="pub-authors"><span class="text-bold">Sakaya, J.</span> & Klami, A. (2016).</span>
             <span class="pub-title">Re-using Gradient Computations in Automatic Variational Inference.</span>
             <span class="pub-venue">NIPS Workshop on Approximate Bayesian Inference.</span>
             <div class="citation-badge" title="Citation count">
@@ -1084,12 +1044,12 @@
             </div>
           </div>
         </section>
-
+        
         <div class="divider"></div>
         
         <!-- Awards Section -->
-        <section class="section fade-in delay-5">
-          <h2 class="section-heading">Awards</h2>
+        <section class="section">
+          <h2>Awards</h2>
           
           <div class="award-item">
             <div class="award-title">Doctoral Program in Computer Science Funding</div>
@@ -1101,27 +1061,22 @@
           </div>
         </section>
         
-        <!-- QR Code for print version only -->
-        <div class="qr-code" aria-hidden="true">
-          <img src="data:image/png;base64,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" alt="QR Code to digital resume" />
-        </div>
-        
         <!-- Footer -->
         <footer class="footer">
           <div>Joseph Sakaya — Curriculum Vitae — Last Updated: May 2025</div>
         </footer>
       </div>
-    </div>
+    </main>
   </div>
 
-  <!-- JavaScript for Scroll Progress Bar -->
+  <!-- Script for progress bar -->
   <script>
     window.onscroll = function() {
-      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      let scrolled = (winScroll / height) * 100;
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
       document.getElementById("progressBar").style.width = scrolled + "%";
-    }
+    };
   </script>
 </body>
 </html>
