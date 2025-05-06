@@ -498,9 +498,9 @@
     
     /* ===== PUBLICATIONS SECTION ===== */
     .publication-item {
-      padding: var(--space-sm);
+      padding: var(--space-xs) var(--space-sm);
       border-radius: var(--radius-md);
-      margin-bottom: var(--space-sm);
+      margin-bottom: var(--space-xs);
       transition: background-color var(--transition-normal), transform var(--transition-normal);
     }
     
@@ -510,44 +510,24 @@
       box-shadow: var(--shadow-md);
     }
     
+    .publication-item:last-child {
+      margin-bottom: 0;
+    }
+    
     .pub-authors {
       display: block;
-      margin-bottom: var(--space-xs);
+      margin-bottom: calc(var(--space-xs) / 2);
     }
     
     .pub-title {
       display: block;
-      margin-bottom: var(--space-xs);
+      margin-bottom: calc(var(--space-xs) / 2);
     }
     
     .pub-venue {
       display: block;
       font-style: italic;
-      margin-bottom: var(--space-sm);
-    }
-    
-    .citation-badge {
-      display: inline-flex;
-      align-items: center;
-      background-color: var(--red-bg);
-      border-radius: var(--radius-full);
-      padding: 2px 8px;
-      font-size: var(--text-xs);
-      color: var(--red-primary);
-      font-weight: var(--font-semibold);
-      transition: all var(--transition-normal);
-    }
-    
-    .citation-badge:hover {
-      background-color: var(--red-primary);
-      color: var(--text-light);
-      transform: scale(1.05);
-    }
-    
-    .citation-icon {
-      width: 12px;
-      height: 12px;
-      margin-right: 3px;
+      font-size: 0.95em;
     }
     
     /* ===== AWARDS SECTION ===== */
@@ -1110,70 +1090,30 @@
             <span class="pub-authors">Kuśmierczyk, T., <span class="text-bold">Sakaya, J.</span>, & Klami, A. (2020).</span>
             <span class="pub-title">Correcting Predictions for Approximate Bayesian Inference.</span>
             <span class="pub-venue">In the 34th AAAI Conference on Artificial Intelligence.</span>
-            <div class="citation-badge" title="Citation count">
-              <svg class="citation-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.5c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                <path d="M12 6c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"/>
-                <path d="M12 9a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1z"/>
-              </svg>
-              11
-            </div>
           </div>
           
           <div class="publication-item">
             <span class="pub-authors">Kuśmierczyk, T., <span class="text-bold">Sakaya, J.</span>, & Klami, A. (2019).</span>
             <span class="pub-title">Variational Bayesian Decision-making for Continuous Utilities.</span>
             <span class="pub-venue">33rd Annual Conference on Neural Information Processing Systems (NeurIPS).</span>
-            <div class="citation-badge" title="Citation count">
-              <svg class="citation-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.5c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                <path d="M12 6c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"/>
-                <path d="M12 9a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1z"/>
-              </svg>
-              19
-            </div>
           </div>
           
           <div class="publication-item">
             <span class="pub-authors">Klami, A., Lagus, J., & <span class="text-bold">Sakaya, J.</span> (2018).</span>
             <span class="pub-title">Lambert Matrix Factorization.</span>
             <span class="pub-venue">European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML PKDD).</span>
-            <div class="citation-badge" title="Citation count">
-              <svg class="citation-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.5c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                <path d="M12 6c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"/>
-                <path d="M12 9a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1z"/>
-              </svg>
-              7
-            </div>
           </div>
           
           <div class="publication-item">
             <span class="pub-authors"><span class="text-bold">Sakaya, J.</span> & Klami, A. (2017).</span>
             <span class="pub-title">Importance Sampled Stochastic Optimization for Variational Inference.</span>
             <span class="pub-venue">Uncertainty in Artificial Intelligence (UAI).</span>
-            <div class="citation-badge" title="Citation count">
-              <svg class="citation-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.5c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                <path d="M12 6c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"/>
-                <path d="M12 9a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1z"/>
-              </svg>
-              20
-            </div>
           </div>
           
           <div class="publication-item">
             <span class="pub-authors"><span class="text-bold">Sakaya, J.</span> & Klami, A. (2016).</span>
             <span class="pub-title">Re-using Gradient Computations in Automatic Variational Inference.</span>
             <span class="pub-venue">NIPS Workshop on Approximate Bayesian Inference.</span>
-            <div class="citation-badge" title="Citation count">
-              <svg class="citation-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.5c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                <path d="M12 6c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"/>
-                <path d="M12 9a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1z"/>
-              </svg>
-              5
-            </div>
           </div>
         </section>
         
