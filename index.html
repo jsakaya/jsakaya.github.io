@@ -349,11 +349,28 @@
       z-index: 10;
     }
     
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--space-xs);
+      flex-wrap: wrap;
+    }
+    
+    .job-title-company {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .job-meta {
+      text-align: right;
+      margin-left: var(--space-lg);
+    }
+    
     .job-title {
       font-weight: var(--font-bold);
       font-size: var(--text-lg);
       display: block;
-      margin-bottom: var(--space-xs);
     }
     
     .job-date {
@@ -372,7 +389,7 @@
     .job-location {
       color: var(--text-medium);
       font-size: var(--text-sm);
-      margin-bottom: var(--space-md);
+      margin-bottom: var(--space-xs);
     }
     
     .job-details {
@@ -396,6 +413,24 @@
       background-color: var(--red-bg);
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
+    }
+    
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--space-xs);
+      flex-wrap: wrap;
+    }
+    
+    .edu-primary {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .edu-meta {
+      text-align: right;
+      margin-left: var(--space-lg);
     }
     
     .school-name {
@@ -518,6 +553,7 @@
     .award-desc {
       border-left: 2px solid var(--red-border);
       padding-left: var(--space-md);
+      margin-top: var(--space-sm);
     }
     
     /* ===== FOOTER ===== */
@@ -704,6 +740,21 @@
       .edu-details, .award-desc {
         padding-left: var(--space-sm);
       }
+      
+      /* Improve mobile layout for job headers */
+      .job-header, .edu-header {
+        flex-direction: column;
+      }
+      
+      .job-title-company, .edu-primary {
+        margin-bottom: var(--space-xs);
+        min-width: 100%;
+      }
+      
+      .job-meta, .edu-meta {
+        text-align: left;
+        margin-left: 0;
+      }
     }
     
     @media (max-width: 375px) {
@@ -831,10 +882,16 @@
             <!-- Senior Data Scientist -->
             <div class="experience-item">
               <div class="timeline-dot"></div>
-              <div class="job-title">Senior Data Scientist</div>
-              <div class="job-date">March 2024 — Present</div>
-              <div class="job-company">App Orchid Inc.</div>
-              <div class="job-location">San Ramon, CA (Remote)</div>
+              <div class="job-header">
+                <div class="job-title-company">
+                  <div class="job-title">Senior Data Scientist</div>
+                  <div class="job-company">App Orchid Inc.</div>
+                </div>
+                <div class="job-meta">
+                  <div class="job-date">March 2024 — Present</div>
+                  <div class="job-location">San Ramon, CA (Remote)</div>
+                </div>
+              </div>
               
               <div class="job-details">
                 <h3>Projects</h3>
@@ -861,8 +918,14 @@
             <!-- Primary Caregiver -->
             <div class="experience-item">
               <div class="timeline-dot"></div>
-              <div class="job-title">Primary Caregiver</div>
-              <div class="job-date">March 2021 — March 2024</div>
+              <div class="job-header">
+                <div class="job-title-company">
+                  <div class="job-title">Primary Caregiver</div>
+                </div>
+                <div class="job-meta">
+                  <div class="job-date">March 2021 — March 2024</div>
+                </div>
+              </div>
               
               <div class="job-details">
                 <p>Took time away from the workforce to prioritize family responsibilities, serving as the primary caregiver for two young children.</p>
@@ -872,10 +935,16 @@
             <!-- Doctoral Student -->
             <div class="experience-item">
               <div class="timeline-dot"></div>
-              <div class="job-title">Doctoral Student</div>
-              <div class="job-date">January 2016 — March 2021</div>
-              <div class="job-company">Multisource Probabilistic Inference Group</div>
-              <div class="job-location">Helsinki Institute for Information Technology</div>
+              <div class="job-header">
+                <div class="job-title-company">
+                  <div class="job-title">Doctoral Student</div>
+                  <div class="job-company">Multisource Probabilistic Inference Group</div>
+                </div>
+                <div class="job-meta">
+                  <div class="job-date">January 2016 — March 2021</div>
+                  <div class="job-location">Helsinki Institute for Information Technology</div>
+                </div>
+              </div>
               
               <div class="job-details">
                 <p class="text-italic">
@@ -911,10 +980,16 @@
             <!-- Research Assistant -->
             <div class="experience-item">
               <div class="timeline-dot"></div>
-              <div class="job-title">Research Assistant</div>
-              <div class="job-date">May 2014 — December 2015</div>
-              <div class="job-company">Multisource Probabilistic Inference Group</div>
-              <div class="job-location">Helsinki Institute for Information Technology</div>
+              <div class="job-header">
+                <div class="job-title-company">
+                  <div class="job-title">Research Assistant</div>
+                  <div class="job-company">Multisource Probabilistic Inference Group</div>
+                </div>
+                <div class="job-meta">
+                  <div class="job-date">May 2014 — December 2015</div>
+                  <div class="job-location">Helsinki Institute for Information Technology</div>
+                </div>
+              </div>
               
               <div class="job-details">
                 <p>Scaling up variational inference algorithms for Bayesian word embeddings — building non-conjugate Bayesian models for binary matrix factorization and using noise-contrastive estimation for scalability.</p>
@@ -930,20 +1005,32 @@
           <h2>Education</h2>
           
           <div class="education-item">
-            <div class="school-name">University of Helsinki</div>
-            <div class="school-location">Helsinki, Finland</div>
-            <div class="degree">Doctoral Programme in Computer Science</div>
-            <div class="edu-date">January 2016 — March 2021</div>
+            <div class="edu-header">
+              <div class="edu-primary">
+                <div class="school-name">University of Helsinki</div>
+                <div class="degree">Doctoral Programme in Computer Science</div>
+              </div>
+              <div class="edu-meta">
+                <div class="edu-date">January 2016 — March 2021</div>
+                <div class="school-location">Helsinki, Finland</div>
+              </div>
+            </div>
             <div class="edu-details">
               Thesis: <a href="https://helda.helsinki.fi/bitstream/handle/10138/325149/sakaya_joseph_dissertation_2021.pdf" class="text-italic">From Approximations to Decisions</a>
             </div>
           </div>
           
           <div class="education-item">
-            <div class="school-name">University of Helsinki</div>
-            <div class="school-location">Helsinki, Finland</div>
-            <div class="degree">Master of Science, Algorithms & Machine Learning</div>
-            <div class="edu-date">September 2013 — December 2015</div>
+            <div class="edu-header">
+              <div class="edu-primary">
+                <div class="school-name">University of Helsinki</div>
+                <div class="degree">Master of Science, Algorithms & Machine Learning</div>
+              </div>
+              <div class="edu-meta">
+                <div class="edu-date">September 2013 — December 2015</div>
+                <div class="school-location">Helsinki, Finland</div>
+              </div>
+            </div>
             <div class="edu-details">
               <div>GPA: 5/5</div>
               <div style="margin-top: 0.5rem;">
@@ -954,10 +1041,16 @@
           </div>
           
           <div class="education-item">
-            <div class="school-name">College of Engineering, Guindy, Anna University</div>
-            <div class="school-location">Chennai, India</div>
-            <div class="degree">Bachelor of Engineering, Computer Science & Engineering</div>
-            <div class="edu-date">August 2009 — May 2013</div>
+            <div class="edu-header">
+              <div class="edu-primary">
+                <div class="school-name">College of Engineering, Guindy, Anna University</div>
+                <div class="degree">Bachelor of Engineering, Computer Science & Engineering</div>
+              </div>
+              <div class="edu-meta">
+                <div class="edu-date">August 2009 — May 2013</div>
+                <div class="school-location">Chennai, India</div>
+              </div>
+            </div>
             <div class="edu-details">
               <div>GPA: 8.89/10</div>
               <div style="margin-top: 0.5rem;">
@@ -1052,9 +1145,15 @@
           <h2>Awards</h2>
           
           <div class="award-item">
-            <div class="award-title">Doctoral Program in Computer Science Funding</div>
-            <div class="award-date">January 2016 — December 2019</div>
-            <div class="award-org">University of Helsinki</div>
+            <div class="edu-header">
+              <div class="edu-primary">
+                <div class="award-title">Doctoral Program in Computer Science Funding</div>
+                <div class="award-org">University of Helsinki</div>
+              </div>
+              <div class="edu-meta">
+                <div class="award-date">January 2016 — December 2019</div>
+              </div>
+            </div>
             <div class="award-desc">
               Salaried position awarded to exceptional doctoral candidates for a period of 4 years to conduct research in the focus area of Data Analytics and Machine Learning.
             </div>
