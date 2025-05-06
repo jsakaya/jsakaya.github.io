@@ -243,17 +243,41 @@
     .summary {
       margin: var(--space-md) auto;
       max-width: 90%;
-      background: linear-gradient(to right, #f8e1e5, var(--red-bg));
+      position: relative;
       padding: var(--space-md) var(--space-lg);
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
+      background-color: var(--white);
+      border-left: 4px solid var(--red-primary);
+    }
+    
+    .summary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(248, 225, 229, 0.3), rgba(255, 240, 243, 0.2));
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      pointer-events: none;
     }
     
     .summary-text {
-      text-align: center;
-      line-height: 1.6;
+      position: relative;
+      text-align: left;
+      line-height: 1.7;
       margin-bottom: 0;
       font-size: var(--text-base);
+      color: var(--text-dark);
+      font-weight: var(--font-normal);
+      text-indent: 1.5em;
+    }
+    
+    .summary-text::first-letter {
+      font-size: 1.3em;
+      font-weight: var(--font-medium);
+      color: var(--red-primary);
     }
     
     .contact-list {
@@ -731,11 +755,11 @@
       .summary {
         max-width: 100%;
         padding: var(--space-md);
-        background: linear-gradient(to right, #f8e1e5, #ffebef);
       }
       
       .summary-text {
         font-size: 0.95rem;
+        text-indent: 1em;
       }
       
       /* Hide timeline on small screens to save space */
@@ -822,7 +846,7 @@
           
           <!-- Summary -->
           <div class="summary">
-            <p class="summary-text">Applied scientist with expertise in Bayesian methods and probabilistic programming. Focused on building practical inference algorithms that handle uncertainty effectively in real-world applications. Strong foundation in both theoretical machine learning and software implementation, with experience delivering scalable solutions across academic and industry settings. Passionate about making advanced statistical methods accessible and useful for solving complex problems.</p>
+            <p class="summary-text">Applied scientist with deep expertise in Bayesian methods and probabilistic programming. I develop practical inference algorithms that effectively model uncertainty for real-world applications. With a strong foundation in both theoretical machine learning and software implementation, I deliver scalable solutions that work across academic and industry contexts. My passion lies in making advanced statistical methods accessible and impactful for solving complex, data-driven problems.</p>
           </div>
           
           <!-- Contact Info -->
