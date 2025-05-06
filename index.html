@@ -2,12 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Joseph Sakaya - Resume - Machine learning scientist specializing in Bayesian methods, probabilistic programming, and variational inference">
   <meta name="theme-color" content="#c41e3a">
+  <meta name="keywords" content="Joseph Sakaya, Machine Learning Scientist, Bayesian Methods, Variational Inference, Probabilistic Programming, Data Science, Resume, CV">
+  <meta name="author" content="Joseph Hosanna Sakaya">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Joseph Sakaya | Resume">
+  <meta property="og:description" content="Machine learning scientist specializing in Bayesian methods, probabilistic programming, and variational inference">
+  <meta property="og:type" content="website">
+  
   <title>Joseph Sakaya | Resume</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://jsakaya.github.io/">
   <style>
     /* ===== CSS RESET ===== */
     *, *::before, *::after {
@@ -87,7 +95,7 @@
     }
     
     /* Ensure light mode on mobile */
-    @media (max-width: 768px) {
+    @media (max-width: 768px) and (prefers-color-scheme: dark) {
       :root {
         --red-primary: #c41e3a;
         --red-dark: #9a1626;
@@ -333,6 +341,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      min-width: 0; /* Ensures flex items can shrink below content size */
     }
     
     .contact-item:hover {
@@ -353,6 +362,8 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      min-width: 0;
+      flex: 1;
     }
     
     .contact-item a {
@@ -401,6 +412,7 @@
       transition: all var(--transition-normal);
       display: inline-block;
       font-family: 'Montserrat', sans-serif;
+      margin-bottom: var(--space-xs);
     }
     
     .skill-tag:hover {
@@ -463,6 +475,7 @@
       border: 2px solid var(--white);
       box-shadow: 0 0 0 2px rgba(196, 30, 58, 0.2);
       z-index: 10;
+      transform: translateZ(0); /* Fix rendering on mobile */
     }
     
     .job-header {
@@ -734,6 +747,8 @@
       padding-top: var(--space-md);
       border-top: 1px solid var(--red-border);
       margin-top: var(--space-lg);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
     
     /* ===== UTILITY CLASSES ===== */
@@ -743,6 +758,18 @@
     
     .text-italic {
       font-style: italic;
+    }
+    
+    /* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+    :focus {
+      outline: 2px solid var(--red-primary);
+      outline-offset: 2px;
+    }
+    
+    a:focus, button:focus {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
     }
     
     /* ===== DOWNLOAD BUTTON ===== */
@@ -910,6 +937,7 @@
       
       .summary-text {
         font-size: 0.95rem;
+        line-height: 1.6;
       }
       
       .name {
@@ -925,13 +953,21 @@
         padding: var(--space-xs) var(--space-md);
       }
       
-      /* Hide timeline on small screens to save space */
+      /* Adjust timeline for small screens but keep for visual interest */
       .timeline {
-        padding-left: 0;
+        padding-left: 14px; /* Reduced padding */
       }
       
-      .timeline-bar, .timeline-dot {
-        display: none;
+      .timeline-bar {
+        left: 0;
+        width: 1px;
+        opacity: 0.4;
+      }
+      
+      .timeline-dot {
+        left: -17px;
+        width: 8px;
+        height: 8px;
       }
       
       /* Move download button to bottom of screen */
@@ -964,6 +1000,12 @@
       .job-meta, .edu-meta {
         text-align: left;
         margin-left: 0;
+        width: 100%;
+      }
+      
+      .job-date, .job-location, .edu-date, .school-location {
+        display: inline-block;
+        margin-right: var(--space-md);
       }
     }
     
@@ -983,6 +1025,31 @@
       .publication-item, .education-item, .award-item {
         padding: var(--space-xs);
       }
+      
+      .contact-list {
+        gap: var(--space-xs);
+      }
+      
+      .contact-item {
+        padding: var(--space-xs) var(--space-sm);
+      }
+      
+      .contact-icon {
+        margin-right: calc(var(--space-xs) / 2);
+        font-size: 1em;
+      }
+      
+      .job-header, .edu-header {
+        margin-bottom: var(--space-xs);
+      }
+      
+      .job-title, .school-name {
+        font-size: var(--text-base);
+      }
+      
+      .job-company, .degree {
+        font-size: var(--text-sm);
+      }
     }
   </style>
 </head>
@@ -993,48 +1060,48 @@
   </div>
   
   <!-- Download Button -->
-  <button class="download-btn" onclick="window.print()">
-    <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <button class="download-btn" onclick="window.print()" aria-label="Download resume as PDF" title="Download this resume as a PDF file">
+    <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
     </svg>
     <span>Download PDF</span>
   </button>
   
   <div class="page">
-    <main class="resume">
+    <main class="resume" role="main">
       <div class="resume-content">
         <!-- Header Section -->
-        <header class="header">
+        <header class="header" role="banner">
           <div class="header-inner">
             <div class="header-main">
               <h1 class="name">Joseph Hosanna Sakaya</h1>
               
               <!-- Summary -->
-              <div class="summary">
+              <div class="summary" role="region" aria-label="Professional summary">
                 <p class="summary-text">Applied scientist with deep expertise in Bayesian methods and probabilistic programming. I develop practical inference algorithms that effectively model uncertainty for real-world applications. With a strong foundation in both theoretical machine learning and software implementation, I deliver scalable solutions that work across academic and industry contexts. My passion lies in making advanced statistical methods accessible and impactful for solving complex, data-driven problems.</p>
               </div>
               
               <!-- Contact Info -->
               <div class="contact-container">
-                <div class="contact-list">
-                  <div class="contact-item">
-                    <span class="contact-icon">📍</span>
+                <div class="contact-list" role="list" aria-label="Contact information">
+                  <div class="contact-item" role="listitem">
+                    <span class="contact-icon" aria-hidden="true">📍</span>
                     <span class="contact-content">Seattle, WA</span>
                   </div>
-                  <div class="contact-item">
-                    <span class="contact-icon">📱</span>
+                  <div class="contact-item" role="listitem">
+                    <span class="contact-icon" aria-hidden="true">📱</span>
                     <span class="contact-content">+1 (312) 826-2116</span>
                   </div>
-                  <div class="contact-item">
-                    <span class="contact-icon">✉️</span>
+                  <div class="contact-item" role="listitem">
+                    <span class="contact-icon" aria-hidden="true">✉️</span>
                     <span class="contact-content">
-                      <a href="mailto:hosanna.joseph@gmail.com">hosanna.joseph@gmail.com</a>
+                      <a href="mailto:hosanna.joseph@gmail.com" aria-label="Email: hosanna.joseph@gmail.com">hosanna.joseph@gmail.com</a>
                     </span>
                   </div>
-                  <div class="contact-item">
-                    <span class="contact-icon">🔗</span>
+                  <div class="contact-item" role="listitem">
+                    <span class="contact-icon" aria-hidden="true">🔗</span>
                     <span class="contact-content">
-                      <a href="https://www.linkedin.com/in/sakaya">linkedin.com/in/sakaya</a>
+                      <a href="https://www.linkedin.com/in/sakaya" aria-label="LinkedIn profile: linkedin.com/in/sakaya">linkedin.com/in/sakaya</a>
                     </span>
                   </div>
                 </div>
@@ -1143,7 +1210,6 @@
                   <li>
                     <strong>Knowledge Transfer Initiative:</strong> 
                     <ul class="achievement-list">
-                      <li>Led bi-weekly research seminars that enhanced probabilistic programming capabilities across the R&D team</li>
                       <li>Designed and delivered advanced workshops covering JAX automatic differentiation, stochastic variational inference, normalizing flows, and discrete variable reparameterization techniques</li>
                       <li>Facilitated the adoption of cutting-edge methodologies including Bayesian online natural gradients and specialized inference algorithms</li>
                       <li>Accelerated development cycles for Bayesian model iteration and experimentation</li>
@@ -1152,11 +1218,12 @@
                   <li>
                     <strong>AppOrchid Decision Net:</strong> Led architecture and implementation of a flagship Bayesian decision system, positioned as one of the company's two strategic commercial products:
                     <ul>
-                      <li>Developed first-of-its-kind NumPyro-based decision network engine using probabilistic programming abstractions to automatically build models based on the DAG structure</li>
-                      <li>Created custom SVI loss functions that improved convergence rates by 3.2x on enterprise-scale datasets (50M+ records)</li> 
-                      <li>Implemented hybrid structure learning approach that reduced model creation time from 2 weeks to 3 days</li>
-                      <li>Built React visualization components that handle 1000+ node DAGs while maintaining 60fps performance</li>
-                      <li>Delivered MVP for 2 pilot enterprise clients, resulting in $1.2M in committed future contracts</li>
+                      <li>Architected a NumPyro-based backend that translates directed acyclic graphs (DAGs) into executable Bayesian network models through automated probabilistic program synthesis</li>
+                      <li>Integrated <a href="https://github.com/microsoft/causica" target="_blank" rel="noopener noreferrer">DECI</a> for automatic causal graph discovery from data, complemented by LLM-assisted domain knowledge integration for improved causal structure learning</li>
+                      <li>Designed an interactive causal reasoning framework for conducting what-if scenario exploration and root-cause analysis through model conditioning and counterfactual inference on the DAG structure</li>
+                      <li>Implemented Bayesian decision theory modules that optimize actions based on expected utility calculations with customizable objective functions for domain-specific decision problems</li>
+                      <li>Developed a React-based frontend that enables users to interactively explore causal relationships, visualize posterior distributions, and track real-time model training progress</li>
+                      <li>Working on developing an MVP for 2 pilot enterprise clients in supply chain optimization and resource allocation domains</li>
                     </ul>
                   </li>
                 </ol>
@@ -1176,7 +1243,7 @@
               </div>
               
               <div class="job-details">
-                <p>Took time away from the workforce to prioritize family responsibilities, serving as the primary caregiver for two young children.</p>
+                <p>Took time away from the workforce to prioritize family responsibilities, serving as the primary caregiver for my two young children.</p>
               </div>
             </div>
             
