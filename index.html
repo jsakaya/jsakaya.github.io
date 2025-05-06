@@ -234,61 +234,77 @@
     }
     
     /* ===== HEADER COMPONENTS ===== */
+    .header {
+      position: relative;
+      padding-bottom: var(--space-md);
+      margin-bottom: var(--space-xl);
+      background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(196,30,58,0.03) 100%);
+      padding: var(--space-lg);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 10px 40px rgba(196, 30, 58, 0.05);
+    }
+    
+    .header-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+    
+    .header-main {
+      text-align: center;
+    }
+    
     .name {
       font-size: var(--text-4xl);
-      margin-bottom: var(--space-lg);
       color: var(--text-dark);
       position: relative;
       display: inline-block;
       font-weight: var(--font-bold);
       letter-spacing: -0.02em;
+      margin-bottom: var(--space-xl);
     }
     
     .name::after {
       content: "";
       position: absolute;
-      width: 60%;
+      width: 120px;
       height: 4px;
-      bottom: -10px;
-      left: 20%;
+      bottom: -15px;
+      left: calc(50% - 60px);
       background: var(--red-primary);
       border-radius: var(--radius-full);
     }
     
-    .header {
-      position: relative;
-      padding-bottom: var(--space-md);
-    }
-    
     .summary {
-      margin: var(--space-md) auto var(--space-xl);
-      max-width: 85%;
       position: relative;
       padding: var(--space-lg);
       background-color: var(--white);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
+      border-top: 4px solid var(--red-primary);
       box-shadow: 0 4px 20px rgba(196, 30, 58, 0.07);
       overflow: hidden;
+      margin-bottom: var(--space-md);
     }
     
     .summary::before {
-      content: '';
+      content: '❝';
       position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 4px;
-      background: var(--red-primary);
+      color: rgba(196, 30, 58, 0.04);
+      font-family: Georgia, serif;
+      font-size: 80px;
+      top: 10px;
+      left: 15px;
+      z-index: 0;
     }
     
     .summary::after {
-      content: '"';
+      content: '❞';
       position: absolute;
-      color: rgba(196, 30, 58, 0.05);
+      color: rgba(196, 30, 58, 0.04);
       font-family: Georgia, serif;
-      font-size: 150px;
-      top: -10px;
-      right: 20px;
+      font-size: 80px;
+      bottom: -30px;
+      right: 15px;
       z-index: 0;
     }
     
@@ -313,18 +329,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: var(--space-lg);
-      margin-bottom: var(--space-lg);
       position: relative;
     }
     
     .contact-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: var(--space-md);
       width: 100%;
-      max-width: 90%;
     }
     
     .contact-item {
@@ -336,13 +348,12 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       transition: all var(--transition-normal);
       font-size: var(--text-sm);
-      border-bottom: 2px solid transparent;
-      max-width: 100%;
+      border-left: 3px solid var(--red-primary);
     }
     
     .contact-item:hover {
       transform: translateY(-2px);
-      border-bottom: 2px solid var(--red-primary);
+      background-color: var(--red-bg);
       box-shadow: 0 4px 12px rgba(196, 30, 58, 0.1);
     }
     
@@ -350,6 +361,18 @@
       margin-right: var(--space-sm);
       color: var(--red-primary);
       opacity: 0.9;
+      font-size: 1.2em;
+    }
+    
+    .contact-item a {
+      color: var(--red-primary);
+      font-weight: var(--font-medium);
+    }
+    
+    @media (min-width: 768px) {
+      .header-inner {
+        grid-template-columns: 1fr;
+      }
     }
     
     /* ===== SKILLS SECTION ===== */
@@ -819,17 +842,31 @@
         padding: var(--space-md);
       }
       
-      .contact-list {
-        flex-direction: column;
-        gap: var(--space-xs);
+      .header {
+        padding: var(--space-md);
+        margin-bottom: var(--space-md);
       }
       
-      .contact-item {
-        width: 100%;
+      .header-inner {
+        gap: var(--space-md);
+      }
+      
+      .contact-list {
+        grid-template-columns: 1fr;
+        gap: var(--space-xs);
       }
       
       h1 {
         font-size: var(--text-3xl);
+      }
+      
+      .summary {
+        padding: var(--space-md);
+      }
+      
+      .summary::before,
+      .summary::after {
+        font-size: 60px;
       }
     }
     
@@ -842,20 +879,27 @@
         font-size: var(--text-3xl);
       }
       
-      .summary {
-        max-width: 100%;
-        padding: var(--space-md);
-        margin-bottom: var(--space-lg);
+      .header {
+        padding: var(--space-sm);
       }
       
+      .summary {
+        max-width: 100%;
+        padding: var(--space-sm);
+        margin-bottom: var(--space-md);
+      }
+      
+      .summary::before,
       .summary::after {
-        font-size: 100px;
-        top: -10px;
-        right: 10px;
+        font-size: 40px;
       }
       
       .summary-text {
         font-size: 0.95rem;
+      }
+      
+      .name {
+        margin-bottom: var(--space-lg);
       }
       
       .name::after {
@@ -947,31 +991,35 @@
       <div class="resume-content">
         <!-- Header Section -->
         <header class="header">
-          <h1 class="name">Joseph Hosanna Sakaya</h1>
-          
-          <!-- Summary -->
-          <div class="summary">
-            <p class="summary-text">Applied scientist with deep expertise in Bayesian methods and probabilistic programming. I develop practical inference algorithms that effectively model uncertainty for real-world applications. With a strong foundation in both theoretical machine learning and software implementation, I deliver scalable solutions that work across academic and industry contexts. My passion lies in making advanced statistical methods accessible and impactful for solving complex, data-driven problems.</p>
-          </div>
-          
-          <!-- Contact Info -->
-          <div class="contact-container">
-            <div class="contact-list">
-              <div class="contact-item">
-                <span class="contact-icon">📍</span>
-                Seattle, WA
+          <div class="header-inner">
+            <div class="header-main">
+              <h1 class="name">Joseph Hosanna Sakaya</h1>
+              
+              <!-- Summary -->
+              <div class="summary">
+                <p class="summary-text">Applied scientist with deep expertise in Bayesian methods and probabilistic programming. I develop practical inference algorithms that effectively model uncertainty for real-world applications. With a strong foundation in both theoretical machine learning and software implementation, I deliver scalable solutions that work across academic and industry contexts. My passion lies in making advanced statistical methods accessible and impactful for solving complex, data-driven problems.</p>
               </div>
-              <div class="contact-item">
-                <span class="contact-icon">📱</span>
-                +1 (312) 826-2116
-              </div>
-              <div class="contact-item">
-                <span class="contact-icon">✉️</span>
-                <a href="mailto:hosanna.joseph@gmail.com">hosanna.joseph@gmail.com</a>
-              </div>
-              <div class="contact-item">
-                <span class="contact-icon">🔗</span>
-                <a href="https://www.linkedin.com/in/sakaya">linkedin.com/in/sakaya</a>
+              
+              <!-- Contact Info -->
+              <div class="contact-container">
+                <div class="contact-list">
+                  <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    Seattle, WA
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    +1 (312) 826-2116
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <a href="mailto:hosanna.joseph@gmail.com">hosanna.joseph@gmail.com</a>
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">🔗</span>
+                    <a href="https://www.linkedin.com/in/sakaya">linkedin.com/in/sakaya</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
