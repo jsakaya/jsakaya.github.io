@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Joseph Sakaya - Resume - Doctoral graduate in Computer Science with expertise in machine learning, probabilistic programming, and Bayesian inference">
   <meta name="theme-color" content="#c41e3a">
   <meta name="color-scheme" content="light dark">
@@ -662,26 +662,30 @@
     .delay-4 { animation-delay: 0.4s; }
     .delay-5 { animation-delay: 0.5s; }
     
+    /* Prevent accidental horizontal scrolling */
+    body { overflow-x: hidden; }
+    
     /* Responsive optimizations */
     @media (max-width: 640px) {
-      html {
-        font-size: 14px;
-      }
+      /* Typography tweaks */
+      html { font-size: 14px; }
       
-      .contact-item {
-        width: 100%;
-        padding: 0.35rem 0.75rem;
-        font-size: 0.85rem;
-      }
+      /* Timeline: drop the left rail & markers to reclaim space */
+      .timeline { padding-left: 0; }
+      .timeline-bar,
+      .exp-marker { display: none; }
+      .exp-item { padding-left: 0; }
       
-      .exp-marker {
-        left: -1.5rem;
-        width: 12px;
-        height: 12px;
-      }
+      /* Contact chips: make them full-width rows */
+      .contact-item { width: 100%; padding: 0.4rem 0.8rem; }
       
-      .timeline {
-        padding-left: 1.25rem;
+      /* Download button: move away from notches, shrink a little */
+      .download-btn {
+        top: auto;        /* un-fix from the status bar area */
+        bottom: 1rem;     /* stick to bottom-right instead */
+        right: 1rem;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
       }
       
       .edu-details, .award-desc {
@@ -703,10 +707,9 @@
       }
     }
     
+    /* ------------------ ≤ 375 px ------------------ */
     @media (max-width: 375px) {
-      html {
-        font-size: 13px;
-      }
+      html { font-size: 13px; }
       
       .resume-card-content {
         padding: 1.25rem 1rem;
