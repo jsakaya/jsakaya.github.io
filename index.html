@@ -540,6 +540,34 @@
       margin-bottom: var(--space-sm);
       line-height: 1.5;
     }
+
+    .model-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin: var(--space-sm) 0 var(--space-md) 0;
+    }
+
+    .model-pill {
+      background: linear-gradient(135deg, rgba(196, 30, 58, 0.10), rgba(230, 57, 70, 0.06));
+      border: 1px solid rgba(196, 30, 58, 0.22);
+      border-radius: var(--radius-full);
+      color: var(--text-dark);
+      display: inline-flex;
+      align-items: center;
+      padding: 0.22rem 0.6rem;
+      font-size: 0.78rem;
+      font-weight: var(--font-medium);
+      font-family: 'Montserrat', sans-serif;
+      white-space: nowrap;
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+    }
+
+    .model-pill:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+      border-color: rgba(196, 30, 58, 0.32);
+    }
     
     .achievement-description {
       margin-left: var(--space-md);
@@ -1032,6 +1060,10 @@
       .skill-description {
         display: none; /* Hide skill descriptions in print */
       }
+
+      .model-pills {
+        display: none; /* Keep print focused and compact */
+      }
       
       /* Timeline compression */
       .timeline {
@@ -1126,9 +1158,19 @@
         break-inside: avoid;
       }
       
-      /* Force publications onto page 2 */
+      /* Keep publications in the same PDF unless they naturally overflow */
       .publications-section {
-        page-break-before: always;
+        page-break-before: auto;
+      }
+
+      /* Keep the PDF to one page: show selected publications only */
+      .publications-section .publication-item:nth-of-type(n+4) {
+        display: none;
+      }
+
+      /* Drop awards in print to preserve space */
+      .awards-section {
+        display: none !important;
       }
       
       /* Layout optimization for publications */
@@ -1368,7 +1410,7 @@
               
               <!-- Summary -->
               <div class="summary" role="region" aria-label="Professional summary">
-                <p class="summary-text">Applied scientist with deep expertise in Bayesian methods and probabilistic programming. I develop practical inference algorithms that effectively model uncertainty for real-world applications. With a strong foundation in both theoretical machine learning and software implementation, I deliver scalable solutions that work across academic and industry contexts. My passion lies in making advanced statistical methods accessible and impactful for solving complex, data-driven problems.</p>
+                <p class="summary-text">Applied scientist focused on Bayesian machine learning and probabilistic programming. I build inference and decision systems that quantify uncertainty and support real-world decisions.</p>
               </div>
               
               <!-- Contact Info -->
@@ -1411,7 +1453,7 @@
               <span class="skill-tag">R</span>
               <span class="skill-tag">C</span>
             </div>
-            <div class="skill-description">Expert-level programming for scientific computing and algorithm implementation</div>
+            <div class="skill-description">Python/R/C for scientific computing and production ML</div>
           </div>
           
           <div class="skill-category">
@@ -1426,7 +1468,7 @@
               <span class="skill-tag">Pandas</span>
               <span class="skill-tag">NumPy</span>
             </div>
-            <div class="skill-description">Advanced proficiency with ML frameworks for developing high-performance computational models</div>
+            <div class="skill-description">JAX/PyTorch/TensorFlow stack for training and inference</div>
           </div>
           
           <div class="skill-category">
@@ -1438,7 +1480,7 @@
               <span class="skill-tag">BlackJAX</span>
               <span class="skill-tag">PyMC</span>
             </div>
-            <div class="skill-description">Specialized in Bayesian modeling ecosystems for efficient probabilistic inference</div>
+            <div class="skill-description">NumPyro/Pyro/Stan for Bayesian modeling and inference</div>
           </div>
           
           <div class="skill-category">
@@ -1448,7 +1490,7 @@
               <span class="skill-tag">Statistical Modeling</span>
               <span class="skill-tag">Regression Analysis</span>
             </div>
-            <div class="skill-description">Deep theoretical understanding of statistical learning methods and their applications</div>
+            <div class="skill-description">Supervised learning, deep learning, and statistical modeling</div>
           </div>
           
           <div class="skill-category">
@@ -1460,7 +1502,7 @@
               <span class="skill-tag">Diffusion Models</span>
               <span class="skill-tag">Normalizing Flows</span>
             </div>
-            <div class="skill-description">Core research focus on approximate inference methods and generative modeling</div>
+            <div class="skill-description">Variational inference, decision theory, and generative models (VAE, diffusion, flows)</div>
           </div>
         </section>
         
@@ -1489,34 +1531,21 @@
               
               <div class="job-details">
                 <h3>Key Achievements</h3>
-                <ol>
-                  <li>
-                    <strong>Advanced Bayesian Modeling & Decision Systems:</strong> Pioneered scalable probabilistic frameworks for complex decision-making under uncertainty:
-                    <ul>
-                      <li>Developed hierarchical state-space models and implemented SVI for inference, achieving approximately 8x speedup</li>
-                      <li>Applied stochastic optimization methods from <a href="https://www.alnurali.com/cvxstoc/" target="_blank" rel="noopener noreferrer">Ali et al. (2015)</a> with Bayesian decision theory to solve constrained optimization problems in supply chain management, portfolio allocation, and resource scheduling</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <strong>Knowledge Transfer Initiative:</strong> 
-                    <ul class="achievement-list">
-                      <li>Designed and delivered advanced workshops covering JAX automatic differentiation, stochastic variational inference, normalizing flows, and discrete variable reparameterization techniques</li>
-                      <li>Facilitated the adoption of cutting-edge methodologies including Bayesian online natural gradients and specialized inference algorithms</li>
-                      <li>Accelerated development cycles for Bayesian model iteration and experimentation</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <strong>AppOrchid Decision Net:</strong> Led architecture and implementation of a flagship Bayesian decision system, positioned as one of the company's two strategic commercial products:
-                    <ul>
-                      <li>Architected a NumPyro-based backend that translates directed acyclic graphs (DAGs) into executable Bayesian network models through automated probabilistic program synthesis</li>
-                      <li>Integrated <a href="https://github.com/microsoft/causica" target="_blank" rel="noopener noreferrer">DECI</a> for automatic causal graph discovery from data, complemented by LLM-assisted domain knowledge integration for improved causal structure learning</li>
-                      <li>Designed an interactive causal reasoning framework for conducting what-if scenario exploration and root-cause analysis through model conditioning and counterfactual inference on the DAG structure</li>
-                      <li>Implemented Bayesian decision theory modules that optimize actions based on expected utility calculations with customizable objective functions for domain-specific decision problems</li>
-                      <li>Developed a React-based frontend that enables users to interactively explore causal relationships, visualize posterior distributions, and track real-time model training progress</li>
-                      <li>Working on developing an MVP for 2 pilot enterprise clients in supply chain optimization and resource allocation domains</li>
-                    </ul>
-                  </li>
-                </ol>
+                <div class="model-pills" role="list" aria-label="Model highlights">
+                  <span class="model-pill" role="listitem">State-space</span>
+                  <span class="model-pill" role="listitem">SVI</span>
+                  <span class="model-pill" role="listitem">Bayesian networks</span>
+                  <span class="model-pill" role="listitem">Causal DAGs</span>
+                  <span class="model-pill" role="listitem">Counterfactuals</span>
+                  <span class="model-pill" role="listitem">Expected utility</span>
+                </div>
+                <ul class="job-accomplishments">
+                  <li><strong>Decision Net:</strong> Built a NumPyro backend that compiles DAGs into executable Bayesian networks and powers a React UI for graph and posterior exploration; delivering an MVP for pilot enterprise clients.</li>
+                  <li><strong>Causal discovery:</strong> Integrated <a href="https://github.com/microsoft/causica" target="_blank" rel="noopener noreferrer">DECI</a> for causal graph discovery and combined it with domain inputs for better structure learning.</li>
+                  <li><strong>Bayesian modeling:</strong> Developed hierarchical state-space models and implemented SVI, achieving about <strong>8x</strong> faster inference cycles.</li>
+                  <li><strong>Decision optimization:</strong> Implemented Bayesian decision-theory modules for expected-utility optimization with configurable objectives.</li>
+                  <li><strong>Enablement:</strong> Ran internal workshops on JAX autodiff, SVI, flows, and discrete reparameterization to speed up team iteration.</li>
+                </ul>
               </div>
             </div>
             
@@ -1533,7 +1562,7 @@
               </div>
               
               <div class="job-details">
-                <p>Took time away from the workforce to prioritize family responsibilities, serving as the primary caregiver for my two young children.</p>
+                <p>Primary caregiver for my two young children.</p>
               </div>
             </div>
             
@@ -1553,9 +1582,9 @@
               
               <div class="job-details">
                 <ul class="job-accomplishments">
-                  <li>Formulated a systematic approach to integrate decision-making into machine learning models using Bayesian methods, resulting in precise (risk reduction of 1-4%) decisions, beneficial in sectors like healthcare and finance</li>
-                  <li>Developed computational techniques to boost convergence speeds by up to tenfold, optimizing the efficiency of probabilistic models in a model-independent manner</li>
-                  <li>Created a matrix factorization model to handle and analyze skewed interaction data common in recommendation systems and word embeddings</li>
+                  <li>Developed Bayesian decision-making methods for ML under uncertainty; demonstrated about 1–4% decision-risk reduction in experiments.</li>
+                  <li>Built model-agnostic convergence acceleration methods that improved probabilistic inference by up to <strong>10x</strong>.</li>
+                  <li>Designed matrix factorization models for skewed interaction data in recommendation systems and word embeddings.</li>
                 </ul>
                 
                 <h3>Thesis Supervision</h3>
@@ -1589,8 +1618,8 @@
               
               <div class="job-details">
                 <ul class="job-accomplishments">
-                  <li>Developed advanced, scalable and multithreaded Bayesian models to capture uncertainty in word embeddings</li>
-                  <li>Implemented noise-contrastive estimation techniques for improved scalability in non-conjugate Bayesian models for binary matrix factorization</li>
+                  <li>Built scalable Bayesian word-embedding models with explicit uncertainty estimates.</li>
+                  <li>Implemented noise-contrastive estimation to scale non-conjugate Bayesian matrix factorization.</li>
                 </ul>
               </div>
             </div>
